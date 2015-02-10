@@ -5,21 +5,18 @@
     <title></title>
 </head>
 <body>
+    <h1>Aceptación de trabajo</h1>
 
-Buen día,
+    {% if acceptance.valid %}
+        <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <p class="submit"><input type="submit" value="Enviar Respuesta"/></p>
+        </form>
 
-Señores
-
-<!--{'client': client, 'acceptance': acceptance, 'work': acceptance.work}-->
-<h2>{{ client.name }}</h2>
-
-La ciudad,
-
-
-
-
-Respetado Cliente:
-
+        {% else %}
+        <h2>Esta notificación ya fué contestada</h2>
+    {% endif %}
 
 
 Reciba un cordial saludo de Telefónica Telecom y todo su equipo de trabajo
@@ -30,8 +27,8 @@ Reciba un cordial saludo de Telefónica Telecom y todo su equipo de trabajo
 <ul>
     <li>F/H Inicio de la actividad: {{ work.initialDate }}</li>
     <li>F/H Fin de la actividad: {{ work.finalDate }}</li>
-    <li>Afectación (duración y hora): 02:00h desde {% with wpList|first as fir %}{{ fir.initialDate }}{% endwith %} hasta {% with wpList|last as las %}{{ las.finalDate }}{% endwith %}</li>
-    <li>Rollback (duración y hora): 02:30h desde {% with cpList|first as fir %}{{ fir.initialDate }}{% endwith %} hasta {% with cpList|last as las %}{{ las.finalDate }}{% endwith %}</li>
+    <li>Afectación (duración y hora): ---02:00h--- desde {% with wpList|first as fir %}{{ fir.initialDate }}{% endwith %} hasta {% with wpList|last as las %}{{ las.finalDate }}{% endwith %}</li>
+    <li>Rollback (duración y hora): ---02:30h--- desde {% with cpList|first as fir %}{{ fir.initialDate }}{% endwith %} hasta {% with cpList|last as las %}{{ las.finalDate }}{% endwith %}</li>
 </ul>
 
 <p><b>Justificación</b> {{ work.description }}</p>
@@ -62,34 +59,6 @@ Reciba un cordial saludo de Telefónica Telecom y todo su equipo de trabajo
         <tr><td>{{ forloop.counter }}</td><td>{{ cp.initialDate }}</td><td>{{ cp.finalDate }}</td><td> --- </td><td>{{ cp.activity }}</td></tr>
     {% endfor %}
 </table>
-
-
-
-
-
-<p>Agradecemos su colaboración y quedamos a la espera de la confirmación y aceptación de la presente notificación.</p>
-
-<p>En Telefónica, trabajamos para prestarle un mejor servicio</p>
-
-
-
-<p>: Solicitamos nos confirmen  la aceptación o no aprobación de los trabajos anteriormente descritos, en el siguiente link: http://127.0.0.1:8000/notifier/acceptance/{{ acceptance.token }}, antes de 48 horas. Si después  de este tiempo no tenemos respuesta alguna, Telefonica Telecom asumirá que la ventana de mantenimiento se puede efectuar.</p>
-
-
-
- Cordialmente
-
-
-
-Servicio Cliente Corporativo
-
-D. R. T.  Mantenimientos
-
-Telefonica Telecom S.A. E.S.P.
-
-018000910999 Ext. 5191
-
-mantenimientos.corporativo.colombia@telefonica.com
 
 </body>
 </html>

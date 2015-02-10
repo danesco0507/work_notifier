@@ -1,5 +1,5 @@
 # Create your views here.
-from forms import WorkUploadForm
+from forms import WorkUploadForm, AcceptanceForm
 from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client
 from xlrd import open_workbook, empty_cell
 from xlrd.xldate import xldate_as_datetime
@@ -49,9 +49,21 @@ def work_view(request, work_id):
     return render(request, 'notifier/work.html', context)
 
 
-def accept_view(request, acceptance_token)
-    acceptance = get_object_or_404(Acceptance, token=acceptance_token)
+def accept_view(request, acceptance_token):
+    acceptanceInstance = get_object_or_404(Acceptance, token=acceptance_token)
+    work = acceptanceInstance.work
+    workPlanList = list(work.workplan_set.order_by('finalDate'))
+    contingencyPlanList = list(work.contingencyplan_set.order_by('finalDate'))
+    affectedList = list(work.affected_set.filter(nit__iexact=acceptanceInstance.nit))
+    form = AcceptanceForm(request.POST or None, instance=acceptanceInstance)
+    if form.is_valid():
+        acc = form.save(commit=False)
+        acc.valid = False
+        acc.responseDate = datetime.datetime.now()
+        acc.save()
 
+    context = {'acceptance':acceptanceInstance, 'form':form, 'work':work, 'wpList':workPlanList, 'cpList': contingencyPlanList, 'affectedList': affectedList}
+    return render(request, 'notifier/acceptance.html', context)
 
 
 
@@ -77,7 +89,7 @@ def acceptance_creation(request, work):
                 if other.nit == affected.nit:
                     other.acceptance = acc
                     other.save()
-                    print other.acceptance
+
 
     for acceptance in work.acceptance_set.all():
         client = Client.objects.get(nit=acceptance.nit)
@@ -145,7 +157,7 @@ def parse_minutegram(msheet, sw):
     work.justification = msheet.cell(jrow+1, 1).value
     work.observations = msheet.cell(orow+1, 1).value
 
-    print "celda 0,7====" + msheet.cell(0,7).value
+
     if msheet.cell(0,7).value == '':
         raise IntegrityError.message(msheet.cell(0,7).value)
     else:
