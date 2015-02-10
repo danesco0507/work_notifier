@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Importante: {% endif %}
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <table>
+        <tr>
+            <th>TRABAJO PROGRAMADO No:</th>
+            <td>{{ work.number }}</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td>{{ work.description }}</td>
+        </tr>
+
+        <tr>
+            <th>Justificación</th>
+        </tr>
+        <tr>
+            <td>{{ work.justification }}</td>
+        </tr>
+
+        <tr>
+            <th>Observaciones</th>
+        </tr>
+        <tr>
+            <td>{{ work.observations }}</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr><th>PLAN DE TRABAJO</th></tr>
+
+        {% for wp in wpList %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ wp.initialDate }}</td>
+                <td>{{ wp.finalDate }}</td>
+                <td>{{ wp.afectation }}</td>
+                <td>{{ wp.activity }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <table>
+        <tr><th>PLAN DE CONTINGENCIA</th></tr>
+        {% for cp in cpList %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ cp.initialDate }}</td>
+                <td>{{ cp.finalDate }}</td>
+                <td>{{ cp.afectation }}</td>
+                <td>{{ cp.activity }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <table>
+        <tr><th>AFECTADOS</th></tr>
+        {% for af in affList %}
+            <tr>
+                <td>{{ af.nit }}</td>
+                <td>{{ af.name }}</td>
+                <td>{{ af.office }}</td>
+                <td>{{ af.service }}</td>
+                <td>{{ af.capacity }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <button type="submit" formmethod="post" formaction="{{ request.path }}">Submit using POST</button>
+    </form>
+
+
+</body>
+</html>

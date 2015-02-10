@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+        <link rel="stylesheet"
+              href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.css">
+        <link rel="stylesheet"
+              href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js">
+        </script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.js">
+        </script>
+        <script type="text/javascript" src="{{ STATIC_URL }}jquery-1.11.2.js">
+</script>
+        {{ form.media }}
+</head>
+<body>
+    <h1>WORKS</h1>
+    <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <p class="submit"><input type="submit" value="Cargar"/></p>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Importante: {% endif %}
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+{% endif %}
+
+    {% if workList %}
+    <table>
+        {% for work in workList %}
+            <tr>
+                <td><a class="link" href="/notifier/{{ work.id }}">{{work.number}}</a></td>
+                <td>{{work.description}}</td>
+                <td>{{work.justification}}</td>
+                <td>{{work.observations}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</body>
+</html>
