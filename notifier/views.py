@@ -10,9 +10,10 @@ from django.core.mail import EmailMessage
 import uuid, datetime
 from django.template.loader import get_template
 from django.template import Context, Template
+from django.views.decorators.cache import never_cache
 
 
-
+@never_cache
 def import_excel_view(request):
 
     if request.method == 'POST':
@@ -36,7 +37,7 @@ def import_excel_view(request):
     context = {'form': form, 'workList': workList}
     return render(request,'notifier/index.html', context )
 
-
+@never_cache
 def work_view(request, work_id):
     workInstance = get_object_or_404(Work, pk=work_id)
     if request.method == 'POST':
@@ -48,7 +49,7 @@ def work_view(request, work_id):
     context = {'work':workInstance, 'affList':affectedList, 'wpList':workPlanList, 'cpList': contingencyPlanList}
     return render(request, 'notifier/work.html', context)
 
-
+@never_cache
 def accept_view(request, acceptance_token):
     acceptanceInstance = get_object_or_404(Acceptance, token=acceptance_token)
     work = acceptanceInstance.work
