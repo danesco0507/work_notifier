@@ -30,8 +30,8 @@ Reciba un cordial saludo de Telefónica Telecom y todo su equipo de trabajo
 <ul>
     <li>F/H Inicio de la actividad: {{ work.initialDate }}</li>
     <li>F/H Fin de la actividad: {{ work.finalDate }}</li>
-    <li>Afectación (duración y hora): 02:00h desde {% with wpList|first as fir %}{{ fir.initialDate }}{% endwith %} hasta {% with wpList|last as las %}{{ las.finalDate }}{% endwith %}</li>
-    <li>Rollback (duración y hora): 02:30h desde {% with cpList|first as fir %}{{ fir.initialDate }}{% endwith %} hasta {% with cpList|last as las %}{{ las.finalDate }}{% endwith %}</li>
+    <li>Afectación (duración y hora): 02:00h desde {% with wpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with wpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
+    <li>Rollback (duración y hora): 02:30h desde {% with cpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with cpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
 </ul>
 
 <p><b>Justificación</b> {{ work.description }}</p>
@@ -51,7 +51,7 @@ Reciba un cordial saludo de Telefónica Telecom y todo su equipo de trabajo
     <tr><td> PLAN DE TRABAJO </td></tr>
     <tr><td> ITEM </td><td>HORA INICIO</td><td>HORA FIN</td><td>AFECTACION ESPERADA</td><td>DESCRIPCION</td></tr>
     {% for wp in wpList %}
-        <tr><td>{{ forloop.counter }}</td><td>{{ wp.initialDate }}</td><td>{{ wp.finalDate }}</td><td> --- </td><td>{{ wp.activity }}</td></tr>
+        <tr><td>{{ forloop.counter }}</td><td>{{ wp.initialDate|date:"M d, Y, h:i a" }}</td><td>{{ wp.finalDate|date:"M d, Y, h:i a" }}</td><td> {{ wp.affectation }} </td><td>{{ wp.activity }}</td></tr>
     {% endfor %}
 </table>
 
@@ -59,7 +59,7 @@ Reciba un cordial saludo de Telefónica Telecom y todo su equipo de trabajo
     <tr><td> PLAN DE CONTINGENCIA </td></tr>
     <tr><td> ITEM </td><td>HORA INICIO</td><td>HORA FIN</td><td>AFECTACION ESPERADA</td><td>DESCRIPCION</td></tr>
     {% for cp in cpList %}
-        <tr><td>{{ forloop.counter }}</td><td>{{ cp.initialDate }}</td><td>{{ cp.finalDate }}</td><td> --- </td><td>{{ cp.activity }}</td></tr>
+        <tr><td>{{ forloop.counter }}</td><td>{{ cp.initialDate|date:"M d, Y, h:i a" }}</td><td>{{ cp.finalDate|date:"M d, Y, h:i a" }}</td><td> {{ wc.affectation }} </td><td>{{ cp.activity }}</td></tr>
     {% endfor %}
 </table>
 

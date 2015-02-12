@@ -49,9 +49,9 @@
         {% for wp in wpList %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ wp.initialDate }}</td>
-                <td>{{ wp.finalDate }}</td>
-                <td>{{ wp.afectation }}</td>
+                <td>{{ wp.initialDate|date:"M d, Y, h:i a"}}</td>
+                <td>{{ wp.finalDate|date:"M d, Y, h:i a" }}</td>
+                <td>{{ wp.affectation }}</td>
                 <td>{{ wp.activity }}</td>
             </tr>
         {% endfor %}
@@ -62,9 +62,9 @@
         {% for cp in cpList %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ cp.initialDate }}</td>
-                <td>{{ cp.finalDate }}</td>
-                <td>{{ cp.afectation }}</td>
+                <td>{{ cp.initialDate|date:"M d, Y, h:i a" }}</td>
+                <td>{{ cp.finalDate|date:"M d, Y, h:i a" }}</td>
+                <td>{{ cp.affectation }}</td>
                 <td>{{ cp.activity }}</td>
             </tr>
         {% endfor %}

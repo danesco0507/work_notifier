@@ -23,7 +23,11 @@ class WorkUploadForm(forms.ModelForm):
         widgets = {'initialDate': DateTimePicker(options={"format": "YYYY-MM-DD HH:mm",
                                        "pickSeconds": False}),
                    'finalDate': DateTimePicker(options={"format": "YYYY-MM-DD HH:mm",
-                                       "pickSeconds": False})}
+                                       "pickSeconds": False}),
+                   'affectTime': DateTimePicker(options={"format": "HH:mm",
+                                       "pickSeconds": False, "pickDate": False}),
+                   'rollbackTime': DateTimePicker(options={"format": "HH:mm",
+                                       "pickSeconds": False, "pickDate": False})}
         exclude = ['description', 'justification', 'observations', 'number']
 
 

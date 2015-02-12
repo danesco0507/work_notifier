@@ -38,7 +38,7 @@ class Work(models.Model):
     description = models.TextField( verbose_name='work_description')
     justification = models.TextField(verbose_name='work_justification')
     observations = models.TextField(verbose_name='work_observation')
-    number = models.CharField(max_length=20, verbose_name='work_number')
+    number = models.CharField(max_length=20, verbose_name='work_number', unique=True)
     ticketArea = models.ForeignKey(Area, unique=False)
     department = models.ForeignKey(Department, unique=False)
     municipality = models.ForeignKey(Municipality, unique=False)
@@ -46,6 +46,8 @@ class Work(models.Model):
     ticketCause = models.ForeignKey(Cause, unique=False)
     initialDate = models.DateTimeField(verbose_name='work_initial_date')
     finalDate = models.DateTimeField(verbose_name='work_final_date')
+    affectTime = models.TimeField(verbose_name='affect_time', blank=True, null=True)
+    rollbackTime = models.TimeField(verbose_name='rollback_time', blank=True, null=True)
     def __str__(self):
         return self.number
 

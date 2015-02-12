@@ -2,7 +2,7 @@
 from forms import WorkUploadForm, AcceptanceForm
 from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client
 from xlrd import open_workbook, empty_cell
-from xlrd.xldate import xldate_as_datetime
+from xlrd.xldate import xldate_as_datetime, xldate_as_tuple
 from django.shortcuts import render, get_object_or_404
 from django.db import transaction, IntegrityError
 from django.contrib import messages
@@ -112,7 +112,7 @@ def send_notification(request, client, acceptance):
                 context = Context({'client': client, 'acceptance': acceptance, 'work': acceptance.work, 'wpList':workPlanList, 'cpList': contingencyPlanList, 'affectedList': affectedList})
 
                 msg = template.render(context=context)
-                email = EmailMessage(subject='NOTIFICACION '+acceptance.work.number, to=[emaildir.email],body=msg, from_email='danesco0507@gmail.com' )
+                email = EmailMessage(subject='NOTIFICACION '+acceptance.work.number, to=[emaildir.email],body=msg, from_email='gestion.epros@gmail.com' )
                 email.content_subtype = "html"
                 email.send()
                 acceptance.notifiedDate = datetime.datetime.now()
@@ -174,7 +174,7 @@ def parse_minutegram(msheet, sw):
             wp.work=work
             wp.initialDate = xldate_as_datetime(msheet.cell(i, 2).value, 0)
             wp.finalDate = xldate_as_datetime(msheet.cell(i, 3).value, 0)
-            wp.affectation = msheet.cell(i, 4).value
+            wp.affectation = datetime.time(*(xldate_as_tuple(msheet.cell(i, 4).value, 0))[3:])
             wp.activity = msheet.cell(i, 5).value
 
             wp.save()
@@ -186,7 +186,7 @@ def parse_minutegram(msheet, sw):
             cp.work=work
             cp.initialDate = xldate_as_datetime(msheet.cell(i, 2).value, 0)
             cp.finalDate = xldate_as_datetime(msheet.cell(i, 3).value, 0)
-            cp.affectation = msheet.cell(i, 4).value
+            cp.affectation = datetime.time(*(xldate_as_tuple(msheet.cell(i, 4).value, 0))[3:])
             cp.activity = msheet.cell(i, 5).value
 
             cp.save()
