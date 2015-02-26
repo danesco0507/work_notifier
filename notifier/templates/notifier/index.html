@@ -1,30 +1,57 @@
 <!DOCTYPE html>
 {% load static %}
+{% load staticfiles %}
+{% load notifier_extras %}
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
-        <link rel="stylesheet"
-              href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.css">
-        <link rel="stylesheet"
-              href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.css">
-        <script type="text/javascript" src="{{ STATIC_URL }}jquery-1.11.2.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js">
-        </script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.js">
-        </script>
 
+    <link rel="stylesheet" href="/static/colorbox-master/example1/colorbox.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'notifier/style.css' %}">
 
-        {{ form.media }}
+    <script src="/static/jquery-1.11.2.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+    <script src="/static/colorbox-master/jquery.colorbox.js"></script>
+    <script>
+        $(document).ready(function() {
+                $(".inline").colorbox({inline:true, width:"450px"});
+        });
+    </script>
+
+    {{ form.media }}
+
 </head>
-<body>
-    <h1>WORKS</h1>
-    <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <p class="submit"><input type="submit" value="Cargar"/></p>
-    </form>
 
+
+<body>
+
+    <h1 id="titulo">TRABAJOS </h1>
+
+    {% if form.errors %}
+        <ol>
+        {% for error in form.errors %}
+            <li><strong>{{ error|escape }}</strong></li>
+        {% endfor %}
+        </ol>
+    {% endif %}
+    <div id="work_form">
+        <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+            <table>
+                {% csrf_token %}
+
+                {% for field in form %}
+                    {% if not forloop.counter|divisibleby:"2" %}
+                        <tr><th>{{ field.label }}</th><td>{{ field }}</td>
+                    {% else %}
+                        <th>{{ field.label }}</th><td>{{ field }}</td></tr>
+                    {% endif %}
+                {% endfor %}
+                <tr><td colspan="4" align="center" class="submit" style="margin:auto;"><input type="submit" value="Cargar"/></td></tr>
+            </table>
+        </form>
+    </div>
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
@@ -34,19 +61,75 @@
             </li>
             {% endfor %}
         </ul>
-{% endif %}
+    {% endif %}
 
     {% if workList %}
-    <table>
-        {% for work in workList %}
-            <tr>
-                <td><a class="link" href="/notifier/{{ work.id }}">{{work.number}}</a></td>
-                <td>{{work.description}}</td>
-                <td>{{work.justification}}</td>
-                <td>{{work.observations}}</td>
-            </tr>
-        {% endfor %}
-    </table>
-{% endif %}
+    <div id="regular_table">
+        <fieldset>
+        <legend>LISTADO DE EPROS:</legend>
+            <table>
+                <tr>
+                    <th>NUMERO DE TRABAJO</th>
+                    <th>FECHA INICIO</th>
+                    <th>FECHA OUTBOUND</th>
+                    <th>ESTADO</th>
+                    <th>MUNICIPIO</th>
+                    <th>CLIENTES</th>
+                    <th>ACCIONES</th>
+                </tr>
+                {% for work in workList %}
+                    <tr>
+                        <td><a class="link" href="/notifier/{{ work.id }}">{{work.number}}</a></td>
+                        <td>{{work.initialDate}}</td>
+                        <td>{{work.outboundDate}}</td>
+                        <td>Programado</td>
+                        <td>{{work.municipality}}</td>
+
+                        {% regroup work.affected_set.all by nit as clients %}
+                        <td>{{ clients|length }}</td>
+                        <td><a class="inline cboxElement" href="#informe_{{ work.id }}">{{ work.id }}</a></td>
+                    </tr>
+
+                    <div style="display: none">
+                        <div  id="informe_{{ work.id }}" style="padding:10px; background:#fff;">
+                            <h3>{{ work.number }}</h3>
+                                <b style="float: left">Area:</b> <b style="float: right">{{ work.ticketArea.name }}</b>
+                                <br>
+                                <b style="float: left">Tipo Area:</b> <b style="float: right">{{ work.ticketArea.type }}</b>
+                                <br>
+                                <b style="float: left">Causa:</b> <b style="float: right">{{ work.ticketCause }}</b>
+                                <br>
+                                <b style="float: left">Fecha Inicio:</b> <b style="float: right">{{ work.initialDate }}</b>
+                                <br>
+                                <b style="float: left">Fecha Outbound:</b> <b style="float: right">{{ work.outboundDate }}</b>
+                                <br>
+                                <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
+                                <br>
+                                <b style="float: left">Ancho de Banda:</b> <b style="float: right">{{ work.affected_set.all|get_total_capacity }}</b>
+                                <br>
+
+                            {% if work.acceptance_set.all %}
+                                <b>ESTADO DE APROBACIÓN:</b>
+                                <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
+                                <br>
+                                <b style="float: left">Clientes Aceptado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:False|length }}</b>
+                                <br>
+                                <b style="float: left">Clientes Rechazado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:True|length }}</b>
+                                <br>
+                                <b style="float: left">Pendiente:</b> <b style="float: right">{{ work.acceptance_set.all|get_no_response|length }}</b>
+                                <br>
+                                <a href="/notifier/{{ work.id }}/state">VER</a>
+
+                            {% else %}
+                                <b>ESTE TRABAJO NO HA SIDO NOTIFICADO</b>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </table>
+        </fieldset>
+    </div>
+    {% endif %}
+
 </body>
 </html>

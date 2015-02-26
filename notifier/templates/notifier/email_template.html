@@ -1,16 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+
+    <style>
+        body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+div{
+    padding: 10px;
+}
+
+#lista{
+    margin: auto;
+    width: 800px;
+}
+
+pre{
+    margin: auto;
+    width: 800px;
+    padding-top: 6px;
+}
+
+#regular_table {
+    margin: auto;
+    width: 800px;
+    padding-top: 6px;
+}
+
+#regular_table table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden; /* hide standard table (collapsed) border */
+    box-shadow: 0 0 0 1px #666; /* this draws the table border  */
+}
+
+#regular_table td, #regular_table th {
+    font-size: 1em;
+    border: 1px solid #98bf21;
+    padding: 3px 7px 2px 7px;
+}
+
+#regular_table th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #A7C942;
+    color: #ffffff;
+}
+
+#regular_table tr:first-child th:first-child{
+    border-top-left-radius: 10px;
+}
+
+#regular_table tr:first-child th:last-child{
+    border-top-right-radius: 10px;
+}
+
+#regular_table tr:last-child td:first-child{
+    border-bottom-left-radius: 10px;
+}
+
+#regular_table tr:last-child td:last-child{
+    border-bottom-right-radius: 10px;
+}
+
+    </style>
+
+    {% load staticfiles %}
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'notifier/style.css' %}">
 </head>
 <body>
 
-Buen día,
+<pre>Buen día,
+
+
+    <img src="cid:image002">
 
 Señores
 
-<!--{'client': client, 'acceptance': acceptance, 'work': acceptance.work}-->
+
 <h2>{{ client.name }}</h2>
 
 La ciudad,
@@ -25,55 +101,59 @@ Respetado Cliente:
 Reciba un cordial saludo de Telefónica Telecom y todo su equipo de trabajo
 
 
- Notificacion del {{ work.ticketCause.causeType }} que se ejecutara en {{ work.department }} - {{ work.municipality}}:
+ Notificacion del {{ work.ticketCause.causeType }} que se ejecutara en {{ work.department }} - {{ work.municipality}}:</pre>
 
-<ul>
+<ul id="lista">
     <li>F/H Inicio de la actividad: {{ work.initialDate }}</li>
     <li>F/H Fin de la actividad: {{ work.finalDate }}</li>
     <li>Afectación (duración y hora): 02:00h desde {% with wpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with wpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
     <li>Rollback (duración y hora): 02:30h desde {% with cpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with cpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
 </ul>
 
-<p><b>Justificación</b> {{ work.description }}</p>
+<pre><b>Justificación</b> {{ work.description }}
 
-<p>{{ work.justification }}</p>
+{{ work.justification }}</pre>
 
+<div id="regular_table">
+    <table>
+        <tr><th colspan="4"> LISTA DE CLIENTES </th></tr>
+        <tr><th> CLIENTE </th><th>SUCURSAL</th><th>CAPACIDAD</th><th>SERVICIO</th></tr>
+        {% for client in affectedList %}
+            <tr><td>{{ client.name }}</td><td>{{ client.office }}</td><td>{{ client.capacity }}</td><td>{{ client.service }}</td></tr>
+        {% endfor %}
+    </table>
+</div>
 
-<table>
-    <tr><td> LISTA DE CLIENTES </td></tr>
-    <tr><td> CLIENTE </td><td>SUCURSAL</td><td>CAPACIDAD</td><td>SERVICIO</td></tr>
-    {% for client in affectedList %}
-        <tr><td>{{ client.name }}</td><td>{{ client.office }}</td><td>{{ client.capacity }}</td><td>{{ client.service }}</td></tr>
-    {% endfor %}
-</table>
+<div id="regular_table">
+    <table>
+        <tr><th colspan="5"> PLAN DE TRABAJO </th></tr>
+        <tr><th> ITEM </th><th>HORA INICIO</th><th>HORA FIN</th><th>AFECTACION ESPERADA</th><th>DESCRIPCION</th></tr>
+        {% for wp in wpList %}
+            <tr><td>{{ forloop.counter }}</td><td>{{ wp.initialDate|date:"M d, Y, h:i a" }}</td><td>{{ wp.finalDate|date:"M d, Y, h:i a" }}</td><td> {{ wp.affectation }} </td><td>{{ wp.activity }}</td></tr>
+        {% endfor %}
+    </table>
+</div>
 
-<table>
-    <tr><td> PLAN DE TRABAJO </td></tr>
-    <tr><td> ITEM </td><td>HORA INICIO</td><td>HORA FIN</td><td>AFECTACION ESPERADA</td><td>DESCRIPCION</td></tr>
-    {% for wp in wpList %}
-        <tr><td>{{ forloop.counter }}</td><td>{{ wp.initialDate|date:"M d, Y, h:i a" }}</td><td>{{ wp.finalDate|date:"M d, Y, h:i a" }}</td><td> {{ wp.affectation }} </td><td>{{ wp.activity }}</td></tr>
-    {% endfor %}
-</table>
-
-<table>
-    <tr><td> PLAN DE CONTINGENCIA </td></tr>
-    <tr><td> ITEM </td><td>HORA INICIO</td><td>HORA FIN</td><td>AFECTACION ESPERADA</td><td>DESCRIPCION</td></tr>
-    {% for cp in cpList %}
-        <tr><td>{{ forloop.counter }}</td><td>{{ cp.initialDate|date:"M d, Y, h:i a" }}</td><td>{{ cp.finalDate|date:"M d, Y, h:i a" }}</td><td> {{ wc.affectation }} </td><td>{{ cp.activity }}</td></tr>
-    {% endfor %}
-</table>
-
-
-
-
-
-<p>Agradecemos su colaboración y quedamos a la espera de la confirmación y aceptación de la presente notificación.</p>
-
-<p>En Telefónica, trabajamos para prestarle un mejor servicio</p>
+<div id="regular_table">
+    <table>
+        <tr><th colspan="5"> PLAN DE CONTINGENCIA </th></tr>
+        <tr><th> ITEM </th><th>HORA INICIO</th><th>HORA FIN</th><th>AFECTACION ESPERADA</th><th>DESCRIPCION</th></tr>
+        {% for cp in cpList %}
+            <tr><td>{{ forloop.counter }}</td><td>{{ cp.initialDate|date:"M d, Y, h:i a" }}</td><td>{{ cp.finalDate|date:"M d, Y, h:i a" }}</td><td> {{ wc.affectation }} </td><td>{{ cp.activity }}</td></tr>
+        {% endfor %}
+    </table>
+</div>
 
 
 
-<p>: Solicitamos nos confirmen  la aceptación o no aprobación de los trabajos anteriormente descritos, en el siguiente link: http://gestionaprobacion.herokuapp.com/notifier/acceptance/{{ acceptance.token }}, antes de 48 horas. Si después  de este tiempo no tenemos respuesta alguna, Telefonica Telecom asumirá que la ventana de mantenimiento se puede efectuar.</p>
+
+<pre>Agradecemos su colaboración y quedamos a la espera de la confirmación y aceptación de la presente notificación.
+
+En Telefónica, trabajamos para prestarle un mejor servicio
+
+
+
+: Solicitamos nos confirmen  la aceptación o no aprobación de los trabajos anteriormente descritos, en el siguiente link: http://gestionaprobacion.herokuapp.com/notifier/acceptance/{{ acceptance.token }}, antes de 48 horas. Si después  de este tiempo no tenemos respuesta alguna, Telefonica Telecom asumirá que la ventana de mantenimiento se puede efectuar.
 
 
 
@@ -89,7 +169,7 @@ Telefonica Telecom S.A. E.S.P.
 
 018000910999 Ext. 5191
 
-mantenimientos.corporativo.colombia@telefonica.com
+mantenimientos.corporativo.colombia@telefonica.com</pre>
 
 </body>
 </html>

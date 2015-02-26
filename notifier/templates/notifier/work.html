@@ -3,8 +3,22 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+
+    {% load staticfiles %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'notifier/style.css' %}">
 </head>
 <body>
+
+    <fieldset id="acciones">
+        <legend>Acciones</legend>
+        <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <button type="submit" formmethod="post" formaction="{{ request.path }}">Enviar Notificación</button>
+        </form>
+
+    </fieldset>
+
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
@@ -16,35 +30,39 @@
         </ul>
     {% endif %}
 
+<div id="regular_table">
     <table>
         <tr>
             <th>TRABAJO PROGRAMADO No:</th>
             <td>{{ work.number }}</td>
         </tr>
         <tr>
-            <th>Descripción</th>
+            <th colspan="2">Descripción</th>
         </tr>
         <tr>
-            <td>{{ work.description }}</td>
-        </tr>
-
-        <tr>
-            <th>Justificación</th>
-        </tr>
-        <tr>
-            <td>{{ work.justification }}</td>
+            <td colspan="2">{{ work.description }}</td>
         </tr>
 
         <tr>
-            <th>Observaciones</th>
+            <th colspan="2">Justificación</th>
         </tr>
         <tr>
-            <td>{{ work.observations }}</td>
+            <td colspan="2">{{ work.justification }}</td>
+        </tr>
+
+        <tr>
+            <th colspan="2">Observaciones</th>
+        </tr>
+        <tr>
+            <td colspan="2">{{ work.observations }}</td>
         </tr>
     </table>
+</div>
 
-    <table>
-        <tr><th>PLAN DE TRABAJO</th></tr>
+<div id="regular_table">
+    <table width="100%">
+        <tr><th colspan="5">PLAN DE TRABAJO</th></tr>
+        <tr><th></th><th>Fecha Inicial</th><th>Fecha Final</th><th>Afectación</th><th>Actividad</th></tr>
 
         {% for wp in wpList %}
             <tr>
@@ -56,9 +74,12 @@
             </tr>
         {% endfor %}
     </table>
+</div>
 
-    <table>
-        <tr><th>PLAN DE CONTINGENCIA</th></tr>
+<div id="regular_table">
+    <table width="100%">
+        <tr><th colspan="5">PLAN DE CONTINGENCIA</th></tr>
+        <tr><th></th><th>Fecha Inicial</th><th>Fecha Final</th><th>Afectación</th><th>Actividad</th></tr>
         {% for cp in cpList %}
             <tr>
                 <td>{{ forloop.counter }}</td>
@@ -69,9 +90,12 @@
             </tr>
         {% endfor %}
     </table>
+</div>
 
+<div id="regular_table">
     <table>
-        <tr><th>AFECTADOS</th></tr>
+        <tr><th colspan="5">AFECTADOS</th></tr>
+        <tr><th>NIT</th><th>NOMBRE</th><th>SUCURSAL</th><th>SERVICIO</th><th>CAPACIDAD</th></tr>
         {% for af in affList %}
             <tr>
                 <td>{{ af.nit }}</td>
@@ -82,11 +106,7 @@
             </tr>
         {% endfor %}
     </table>
-
-    <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <button type="submit" formmethod="post" formaction="{{ request.path }}">Submit using POST</button>
-    </form>
+</div>
 
 
 </body>

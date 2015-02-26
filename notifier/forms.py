@@ -4,6 +4,7 @@ from django import forms
 import os
 from models import Work, Acceptance
 from bootstrap3_datetime.widgets import DateTimePicker
+from django.utils.html import strip_tags
 
 IMPORT_FILE_TYPES = ['.xls', '.xlsx']
 
@@ -24,6 +25,8 @@ class WorkUploadForm(forms.ModelForm):
                                        "pickSeconds": False}),
                    'finalDate': DateTimePicker(options={"format": "YYYY-MM-DD HH:mm",
                                        "pickSeconds": False}),
+                   'outboundDate': DateTimePicker(options={"format": "YYYY-MM-DD",
+                                       "pickTime": False}),
                    'affectTime': DateTimePicker(options={"format": "HH:mm",
                                        "pickSeconds": False, "pickDate": False}),
                    'rollbackTime': DateTimePicker(options={"format": "HH:mm",

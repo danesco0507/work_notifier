@@ -11,6 +11,10 @@ import uuid, datetime
 from django.template.loader import get_template
 from django.template import Context, Template
 from django.views.decorators.cache import never_cache
+from django.db.models import Q
+
+import os
+from email.mime.image import MIMEImage
 
 
 @never_cache
@@ -67,6 +71,27 @@ def accept_view(request, acceptance_token):
     return render(request, 'notifier/acceptance.html', context)
 
 
+@never_cache
+def acceptance_state_view(request,work_id):
+    workInstance = get_object_or_404(Work, id=work_id)
+
+    acceptedList = workInstance.acceptance_set.filter(Q(accepted=True) & Q(responseDate__isnull=False))
+    noAcceptedList = workInstance.acceptance_set.filter(Q(accepted=True) & Q(responseDate__isnull=False))
+    pendantList = workInstance.acceptance_set.filter(responseDate=None)
+
+    accepted = get_client_list_by_nit(acceptedList)
+    noAccepted = get_client_list_by_nit(noAcceptedList)
+    pendant = get_client_list_by_nit(pendantList)
+
+    maxi = max(len(accepted), len(noAccepted), len(pendant))
+
+    aRange = range(maxi - len(accepted))
+    nRange = range(maxi - len(noAccepted))
+    pRange = range(maxi - len(pendant))
+
+    context = {'work': workInstance, 'acceptedList': accepted, 'noAcceptedList': noAccepted, 'pendantList': pendant, 'aRange': aRange, 'nRange': nRange, 'pRange': pRange}
+    return render(request, 'notifier/acceptance_state.html', context)
+
 
 #-----helper functions-----
 
@@ -112,10 +137,21 @@ def send_notification(request, client, acceptance):
                 context = Context({'client': client, 'acceptance': acceptance, 'work': acceptance.work, 'wpList':workPlanList, 'cpList': contingencyPlanList, 'affectedList': affectedList})
 
                 msg = template.render(context=context)
+
+                f='static/image002.jpg'
+                print "-----"+os.path.join(os.path.dirname(__file__), f)+"-----"
+                fp = open(os.path.join(os.path.dirname(__file__), f), 'rb')
+                msg_img = MIMEImage(fp.read(), 'jpg')
+                fp.close()
+                msg_img.add_header('Content-ID', '<image002>')
+
                 email = EmailMessage(subject='NOTIFICACION '+acceptance.work.number, to=[emaildir.email],body=msg, from_email='gestion.epros@gmail.com' )
                 email.content_subtype = "html"
+                email.attach(msg_img)
                 email.send()
-                acceptance.notifiedDate = datetime.datetime.now()
+                if acceptance.notifiedDate==None:
+                    acceptance.notifiedDate = datetime.datetime.now()
+                    acceptance.save()
                 messages.success(request, "mensaje enviado exitosamente a: "+emaildir.email)
             except Exception as e:
                 messages.error(request, "Mensaje no enviado a: "+emaildir.email + "   " + e.message)
@@ -152,6 +188,7 @@ def parse_minutegram(msheet, sw):
     work.ticketCause = sw.ticketCause
     work.initialDate = sw.initialDate
     work.finalDate = sw.finalDate
+    work.outboundDate = sw.outboundDate
     #-------------------------------------------------------------------------------
 
     work.description = msheet.cell(drow+1, 1).value
@@ -206,3 +243,12 @@ def parse_corp_clients(csheet, work):
             aff.nit = int(csheet.cell(i,9).value)
 
             aff.save()
+
+
+def get_client_list_by_nit(qList):
+    list = []
+
+    for q in qList:
+        list.append(Client.objects.get(nit=q.nit))
+
+    return list
