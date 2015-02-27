@@ -112,9 +112,9 @@
                                 <b>ESTADO DE APROBACIÓN:</b>
                                 <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
                                 <br>
-                                <b style="float: left">Clientes Aceptado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:False|length }}</b>
+                                <b style="float: left">Clientes Aceptado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:True|length }}</b>
                                 <br>
-                                <b style="float: left">Clientes Rechazado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:True|length }}</b>
+                                <b style="float: left">Clientes Rechazado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:False|length }}</b>
                                 <br>
                                 <b style="float: left">Pendiente:</b> <b style="float: right">{{ work.acceptance_set.all|get_no_response|length }}</b>
                                 <br>

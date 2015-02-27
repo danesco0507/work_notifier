@@ -76,7 +76,7 @@ def acceptance_state_view(request,work_id):
     workInstance = get_object_or_404(Work, id=work_id)
 
     acceptedList = workInstance.acceptance_set.filter(Q(accepted=True) & Q(responseDate__isnull=False))
-    noAcceptedList = workInstance.acceptance_set.filter(Q(accepted=True) & Q(responseDate__isnull=False))
+    noAcceptedList = workInstance.acceptance_set.filter(Q(accepted=False) & Q(responseDate__isnull=False))
     pendantList = workInstance.acceptance_set.filter(responseDate=None)
 
     accepted = get_client_list_by_nit(acceptedList)
