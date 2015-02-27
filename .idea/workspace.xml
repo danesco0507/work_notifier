@@ -2,104 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="256bf47b-b481-44c2-abb7-72fda7ea0b9c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example1/images/border.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example5/images/border.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example4/images/border1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example4/images/border2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/colorbox.ai" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example1/images/controls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example2/images/controls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example3/images/controls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example5/images/controls.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/content/daisy.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/content/daisy@2x.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/content/homer.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/static/image002.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example1/images/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example2/images/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example3/images/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example4/images/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example5/images/loading.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example1/images/loading_background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example5/images/loading_background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/content/marylou.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/content/ohoopee1.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/content/ohoopee2.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/content/ohoopee3.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example1/images/overlay.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/templatetags/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/templates/notifier/acceptance_state.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/content/ajax.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example1/colorbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example2/colorbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example3/colorbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example4/colorbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example5/colorbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/colorbox.jquery.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example1/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example2/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example3/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example4/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/example5/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-bg.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-bn.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ca.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-cs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-da.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-de.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-es.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-et.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-fa.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-fi.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-fr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-gl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-gr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-he.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-hr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-hu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-id.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ja.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-kr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-lt.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-lv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/jquery.colorbox-min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-my.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-nl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-no.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-pl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-pt-BR.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ro.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ru.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-si.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-sk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-sr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-sv.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-tr.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-uk.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-CN.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-TW.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/colorbox-master/jquery.colorbox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/templatetags/notifier_extras.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/static/notifier/style.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/notifier/migrations/0002_auto_20150212_1303.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/acceptance.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/acceptance.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/bootstrap/css/bootstrap.css" afterPath="$PROJECT_DIR$/static/bootstrap/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.js" afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/static/bootstrap/js/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/email_template.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/email_template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/forms.py" afterPath="$PROJECT_DIR$/notifier/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/index.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/jquery-1.11.2.js" afterPath="$PROJECT_DIR$/static/jquery-1.11.2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/models.py" afterPath="$PROJECT_DIR$/notifier/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/work_notifier/settings.py" afterPath="$PROJECT_DIR$/work_notifier/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/urls.py" afterPath="$PROJECT_DIR$/notifier/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/views.py" afterPath="$PROJECT_DIR$/notifier/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/work.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/work.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-fa.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-fa.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-hr.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-hr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ja.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ja.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-pl.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-pl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ru.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ru.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-si.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-si.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-CN.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-CN.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="work_notifier.iws" />
@@ -162,10 +71,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57840616" vertical-offset="1485" max-vertical-offset="2010">
+            <state vertical-scroll-proportion="-2.8481014" vertical-offset="1485" max-vertical-offset="2010">
               <caret line="120" column="70" selection-start-line="120" selection-start-column="70" selection-end-line="120" selection-end-column="70" />
               <folding>
                 <element signature="n#if#0;n#!!top" expanded="false" />
@@ -186,6 +95,26 @@
                 <element signature="n#style#0;n#b#19;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#b#20;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="001_initial.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notifier/migrations/001_initial.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0002_auto_20150226_1418.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/notifier/migrations/0002_auto_20150226_1418.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2910">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -356,6 +285,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work_notifier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="work_notifier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notifier" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -711,7 +658,19 @@
       <option name="project" value="LOCAL" />
       <updated>1423771437673</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Version Funcional con envío de correos e informe de respuestas.">
+      <created>1424991401898</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1424991401898</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Version Funcional con envío de correos e informe de respuestas.">
+      <created>1425010517182</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1425010517182</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -725,17 +684,17 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32791328" sideWeight="0.12013889" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24444444" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24444444" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32791328" sideWeight="0.8798611" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -760,7 +719,8 @@
     <MESSAGE value="Version funcional con envio de correos. &#10;Por Hacer:&#10;- crear el link para el acceptance&#10;- enviar el link por medio del email&#10;- no poner disponible el formulario si ya se contesto&#10;- no poner disponible el formulario si ya se vencio&#10;---para esto se necesita celery" />
     <MESSAGE value="Version funcional con envio de correos. &#10;Por Hacer:&#10;- corregir el link para que&#10;- no poner disponible el formulario si ya se vencio&#10;---para esto se necesita celery" />
     <MESSAGE value="Version funcional con envio de correos. Se niega la creación de un trabajo con el mismo numero y se agregan datos de tiempo de trabajo y rollback&#10;Por Hacer:&#10;- no poner disponible el formulario si ya se vencio&#10;---para esto se necesita celery" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version funcional con envio de correos. Se niega la creación de un trabajo con el mismo numero y se agregan datos de tiempo de trabajo y rollback&#10;Por Hacer:&#10;- no poner disponible el formulario si ya se vencio&#10;---para esto se necesita celery" />
+    <MESSAGE value="Version Funcional con envío de correos e informe de respuestas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version Funcional con envío de correos e informe de respuestas." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1017,13 +977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/migrations/001_initial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/work_notifier/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
@@ -1249,7 +1202,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57840616" vertical-offset="1485" max-vertical-offset="2010">
+        <state vertical-scroll-proportion="-2.8481014" vertical-offset="1485" max-vertical-offset="2010">
           <caret line="120" column="70" selection-start-line="120" selection-start-column="70" selection-end-line="120" selection-end-column="70" />
           <folding>
             <element signature="n#if#0;n#!!top" expanded="false" />
@@ -1270,6 +1223,22 @@
             <element signature="n#style#0;n#b#19;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#b#20;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notifier/migrations/001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notifier/migrations/0002_auto_20150226_1418.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2910">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
