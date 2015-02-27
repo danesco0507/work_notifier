@@ -7,20 +7,56 @@
     {% load staticfiles %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'notifier/style.css' %}">
-</head>
-<body>
-    <h1>Aceptación de trabajo</h1>
 
+    <style>
+        pre{
+            margin: auto;
+            width: 1030px;
+            padding-top: 6px;
+            align-self: center;
+            white-space: pre-wrap;       /* CSS 3 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;
+        }
+
+        #selector{
+            margin: auto;
+            width: inherit;
+            align-self: center;
+            align-content: center;
+        }
+
+        #selector div{
+            float: left;
+            padding-left: 10px;
+            padding-right: 10px;
+            align-self: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Aceptación de trabajo</h1>
+<fieldset style="margin: auto; width: 1030px; align-self: center;">
+    <legend style="padding-top: 10px">ACEPTAR TRABAJO</legend>
     {% if acceptance.valid %}
         <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
+        <div id="selector">
+        {% for field in form.accepted %}
+            <div>{{ field }}</div>
+            {% endfor %}
+
         <p class="submit"><input type="submit" value="Enviar Respuesta"/></p>
+        </div>
         </form>
 
         {% else %}
         <h2>Esta notificación ya fué contestada</h2>
     {% endif %}
+</fieldset>
 
 
 <pre>Reciba un cordial saludo de Telefónica Telecom y todo su equipo de trabajo
@@ -29,10 +65,10 @@
  Notificación del {{ work.ticketCause.causeType }} que se ejecutará en {{ work.department }} - {{ work.municipality}}:</pre>
 
 <ul id="lista">
-    <li>F/H Inicio de la actividad: {{ work.initialDate }}</li>
-    <li>F/H Fin de la actividad: {{ work.finalDate }}</li>
-    <li>Afectación (duración y hora): ---02:00h--- desde {% with wpList|first as fir %}{{ fir.initialDate }}{% endwith %} hasta {% with wpList|last as las %}{{ las.finalDate }}{% endwith %}</li>
-    <li>Rollback (duración y hora): ---02:30h--- desde {% with cpList|first as fir %}{{ fir.initialDate }}{% endwith %} hasta {% with cpList|last as las %}{{ las.finalDate }}{% endwith %}</li>
+    <li>F/H Inicio de la actividad: {{ work.initialDate|date:"M d, Y, h:i a" }}</li>
+    <li>F/H Fin de la actividad: {{ work.finalDate|date:"M d, Y, h:i a" }}</li>
+    <li>Afectación (duración y hora): ---02:00h--- desde {% with wpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with wpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
+    <li>Rollback (duración y hora): ---02:30h--- desde {% with cpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with cpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
 </ul>
 
 <pre><b>Justificación</b> {{ work.description }}
@@ -41,7 +77,7 @@
 
 <div id="regular_table">
 <table>
-    <tr><th> LISTA DE CLIENTES </th></tr>
+    <tr><th colspan="4"> LISTA DE CLIENTES </th></tr>
     <tr><th> CLIENTE </th><th>SUCURSAL</th><th>CAPACIDAD</th><th>SERVICIO</th></tr>
     {% for client in affectedList %}
         <tr><td>{{ client.name }}</td><td>{{ client.office }}</td><td>{{ client.capacity }}</td><td>{{ client.service }}</td></tr>
@@ -51,20 +87,20 @@
 
 <div id="regular_table">
 <table>
-    <tr><th colspan="4"> PLAN DE TRABAJO </th></tr>
+    <tr><th colspan="5"> PLAN DE TRABAJO </th></tr>
     <tr><th> ITEM </th><th>HORA INICIO</th><th>HORA FIN</th><th>AFECTACION ESPERADA</th><th>DESCRIPCION</th></tr>
     {% for wp in wpList %}
-        <tr><td>{{ forloop.counter }}</td><td>{{ wp.initialDate }}</td><td>{{ wp.finalDate }}</td><td> --- </td><td>{{ wp.activity }}</td></tr>
+        <tr><td>{{ forloop.counter }}</td><td>{{ wp.initialDate|date:"M d, Y, h:i a" }}</td><td>{{ wp.finalDate|date:"M d, Y, h:i a" }}</td><td> {{ wp.affectation }} </td><td>{{ wp.activity }}</td></tr>
     {% endfor %}
 </table>
 </div>
 
 <div id="regular_table">
 <table>
-    <tr><th colspan="4"> PLAN DE CONTINGENCIA </th></tr>
+    <tr><th colspan="5"> PLAN DE CONTINGENCIA </th></tr>
     <tr><th> ITEM </th><th>HORA INICIO</th><th>HORA FIN</th><th>AFECTACION ESPERADA</th><th>DESCRIPCION</th></tr>
     {% for cp in cpList %}
-        <tr><td>{{ forloop.counter }}</td><td>{{ cp.initialDate }}</td><td>{{ cp.finalDate }}</td><td> --- </td><td>{{ cp.activity }}</td></tr>
+        <tr><td>{{ forloop.counter }}</td><td>{{ cp.initialDate|date:"M d, Y, h:i a" }}</td><td>{{ cp.finalDate|date:"M d, Y, h:i a" }}</td><td> {{ cp.affectation }} </td><td>{{ cp.activity }}</td></tr>
     {% endfor %}
 </table>
 </div>

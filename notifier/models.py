@@ -60,7 +60,7 @@ class Work(models.Model):
 
 class Acceptance(models.Model):
     work = models.ForeignKey(Work, verbose_name='work_acceptance')
-    accepted = models.BooleanField(default=True, verbose_name='work_accepted')
+    accepted = models.BooleanField(default=True)
     valid = models.BooleanField(default=True, verbose_name='acceptance_valid')
     token = models.CharField(max_length=255, verbose_name='acceptance_token')
     notifiedDate = models.DateTimeField(blank=True, null=True, verbose_name='notifiedDate')

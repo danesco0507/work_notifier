@@ -1,4 +1,4 @@
-{
+html *{
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
@@ -9,9 +9,40 @@ body {
     padding: 0px;
 }
 
+#header {
+    margin: auto;
+    width: 1030px;
+    height: 60px;
+    align-self: center;
+    background-color: #A7C942;
+}
+#header div{
+    width: 500px;
+    height: inherit;
+}
+#header h1 {
+    margin: inherit;
+    height: 40px;
+    padding: 10px;
+    color: #ffffff;
+
+}
+
+#header a{
+    color: #ffffff;
+    float: right;
+    height: 20px;
+    padding: 20px;
+}
 
 
 #lista{
+    margin: auto;
+    width: 1030px;
+    align-self: center;
+}
+
+#messages{
     margin: auto;
     width: 1030px;
     align-self: center;
@@ -23,11 +54,6 @@ body {
     align-self: center;
 }
 
-#titulo {
-    margin: auto;
-    width: 1030px;
-    align-self: center;
-}
 
 #work_form {
     margin: auto;
@@ -90,6 +116,7 @@ body {
     border-radius: 10px;
     border-style: hidden; /* hide standard table (collapsed) border */
     box-shadow: 0 0 0 1px #666; /* this draws the table border  */
+    width: 1030px;
 }
 
 #regular_table td, #regular_table th {

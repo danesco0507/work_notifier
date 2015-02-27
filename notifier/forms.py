@@ -4,18 +4,17 @@ from django import forms
 import os
 from models import Work, Acceptance
 from bootstrap3_datetime.widgets import DateTimePicker
-from django.utils.html import strip_tags
 
 IMPORT_FILE_TYPES = ['.xls', '.xlsx']
 
 class WorkUploadForm(forms.ModelForm):
-    input_excel = forms.FileField(required= True, label= u"Upload the Excel file to import to the system.")
+    input_excel = forms.FileField(required= True, label= u"Seleccionar Archivo Excel.")
 
     def clean_input_excel(self):
         input_excel = self.cleaned_data['input_excel']
         extension = os.path.splitext( input_excel.name )[1]
         if not (extension in IMPORT_FILE_TYPES):
-            raise forms.ValidationError( u'%s is not a valid excel file. Please make sure your input file is an excel file (Excel 2007 is NOT supported.' % extension )
+            raise forms.ValidationError( u'%s no es un archivo de Excel valido. Asegurese de cargar un archivo valido.' % extension )
         else:
             return input_excel
 
@@ -37,4 +36,11 @@ class WorkUploadForm(forms.ModelForm):
 class AcceptanceForm(forms.ModelForm):
     class Meta:
         model = Acceptance
+        widgets = {
+            'accepted': forms.RadioSelect(choices=[
+            (True, 'Aceptar'),
+            (False, 'Rechazar')
+        ])
+        }
         exclude = ['work', 'valid', 'token', 'notifiedDate', 'responseDate', 'nit']
+

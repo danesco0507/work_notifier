@@ -26,9 +26,9 @@
 
 
 <body>
-
-    <h1 id="titulo">TRABAJOS </h1>
-
+    <div id="header">
+        <h1>TRABAJOS </h1>
+    </div>
     {% if form.errors %}
         <ol>
         {% for error in form.errors %}
@@ -53,7 +53,7 @@
         </form>
     </div>
     {% if messages %}
-        <ul class="messages">
+        <ul id="messages">
             {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Importante: {% endif %}
@@ -80,14 +80,14 @@
                 {% for work in workList %}
                     <tr>
                         <td><a class="link" href="/notifier/{{ work.id }}">{{work.number}}</a></td>
-                        <td>{{work.initialDate}}</td>
-                        <td>{{work.outboundDate}}</td>
+                        <td>{{work.initialDate|date:"M d, Y, h:i a"}}</td>
+                        <td>{{work.outboundDate|date:"M d, Y"}}</td>
                         <td>Programado</td>
                         <td>{{work.municipality}}</td>
 
                         {% regroup work.affected_set.all by nit as clients %}
                         <td>{{ clients|length }}</td>
-                        <td><a class="inline cboxElement" href="#informe_{{ work.id }}">{{ work.id }}</a></td>
+                        <td><a class="inline cboxElement" href="#informe_{{ work.id }}">INFORME</a></td>
                     </tr>
 
                     <div style="display: none">
@@ -99,9 +99,9 @@
                                 <br>
                                 <b style="float: left">Causa:</b> <b style="float: right">{{ work.ticketCause }}</b>
                                 <br>
-                                <b style="float: left">Fecha Inicio:</b> <b style="float: right">{{ work.initialDate }}</b>
+                                <b style="float: left">Fecha Inicio:</b> <b style="float: right">{{ work.initialDate|date:"M d, Y, h:i a" }}</b>
                                 <br>
-                                <b style="float: left">Fecha Outbound:</b> <b style="float: right">{{ work.outboundDate }}</b>
+                                <b style="float: left">Fecha Outbound:</b> <b style="float: right">{{ work.outboundDate|date:"M d, Y" }}</b>
                                 <br>
                                 <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
                                 <br>

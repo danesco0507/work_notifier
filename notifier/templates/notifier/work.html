@@ -10,6 +10,22 @@
 </head>
 <body>
 
+    {% if messages %}
+        <ul id="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Importante: {% endif %}
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div id="header">
+        <div style="width: 50%; float: left"><h1>{{ work.number }}</h1></div>
+        <div style="width: 50%; float: right"><a href="/notifier/">ATRAS</a></div>
+    </div>
+
     <fieldset id="acciones">
         <legend>Acciones</legend>
         <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
@@ -19,16 +35,6 @@
 
     </fieldset>
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Importante: {% endif %}
-                {{ message }}
-            </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 
 <div id="regular_table">
     <table>

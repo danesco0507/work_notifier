@@ -152,7 +152,7 @@ def send_notification(request, client, acceptance):
                 if acceptance.notifiedDate==None:
                     acceptance.notifiedDate = datetime.datetime.now()
                     acceptance.save()
-                messages.success(request, "mensaje enviado exitosamente a: "+emaildir.email)
+                #messages.success(request, "mensaje enviado exitosamente a: "+emaildir.email)
             except Exception as e:
                 messages.error(request, "Mensaje no enviado a: "+emaildir.email + "   " + e.message)
 

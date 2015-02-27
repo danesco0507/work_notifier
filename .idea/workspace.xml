@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="256bf47b-b481-44c2-abb7-72fda7ea0b9c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/acceptance.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/acceptance.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/acceptance_state.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/acceptance_state.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/email_template.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/email_template.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/forms.py" afterPath="$PROJECT_DIR$/notifier/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/index.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-fa.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-fa.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-hr.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-hr.js" />
@@ -10,7 +14,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ru.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ru.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-si.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-si.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-CN.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-CN.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/models.py" afterPath="$PROJECT_DIR$/notifier/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/static/notifier/style.css" afterPath="$PROJECT_DIR$/notifier/static/notifier/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/views.py" afterPath="$PROJECT_DIR$/notifier/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/work.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/work.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="work_notifier.iws" />
@@ -39,73 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notifier/models.py">
+      <file leaf-file-name="acceptance.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/acceptance.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1845">
-              <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notifier/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="690">
-              <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
-              <folding>
-                <element signature="e#23#47#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/notifier/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.044871796" vertical-offset="1149" max-vertical-offset="3900">
-              <caret line="78" column="72" selection-start-line="78" selection-start-column="72" selection-end-line="78" selection-end-column="72" />
-              <folding>
-                <element signature="e#26#74#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0886075" vertical-offset="1485" max-vertical-offset="2010">
-              <caret line="116" column="148" selection-start-line="116" selection-start-column="148" selection-end-line="116" selection-end-column="148" />
-              <folding>
-                <element signature="n#if#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#2;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#3;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#4;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#5;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#6;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#7;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#8;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#9;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#10;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#11;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#16;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#18;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#19;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#20;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="acceptance_state.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/acceptance_state.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0" vertical-offset="906" max-vertical-offset="1620">
-              <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.6756757" vertical-offset="0" max-vertical-offset="1710">
+              <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -131,19 +76,19 @@
         <option value="$PROJECT_DIR$/work_notifier/local_settings.py" />
         <option value="$PROJECT_DIR$/notifier/static/static/style.css" />
         <option value="$PROJECT_DIR$/work_notifier/settings.py" />
-        <option value="$PROJECT_DIR$/notifier/templates/notifier/work.html" />
-        <option value="$PROJECT_DIR$/notifier/templates/notifier/email_template.html" />
-        <option value="$PROJECT_DIR$/notifier/templates/notifier/acceptance.html" />
         <option value="$PROJECT_DIR$/static/bootstrap/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/static/colorbox-master/example1/colorbox.css" />
-        <option value="$PROJECT_DIR$/notifier/static/notifier/style.css" />
         <option value="$PROJECT_DIR$/notifier/urls.py" />
-        <option value="$PROJECT_DIR$/notifier/templates/notifier/acceptance_state.html" />
-        <option value="$PROJECT_DIR$/notifier/models.py" />
-        <option value="$PROJECT_DIR$/notifier/forms.py" />
         <option value="$PROJECT_DIR$/notifier/templatetags/notifier_extras.py" />
-        <option value="$PROJECT_DIR$/notifier/templates/notifier/index.html" />
+        <option value="$PROJECT_DIR$/notifier/models.py" />
+        <option value="$PROJECT_DIR$/notifier/templates/notifier/acceptance_state.html" />
+        <option value="$PROJECT_DIR$/notifier/templates/notifier/email_template.html" />
+        <option value="$PROJECT_DIR$/notifier/forms.py" />
+        <option value="$PROJECT_DIR$/notifier/static/notifier/style.css" />
+        <option value="$PROJECT_DIR$/notifier/templates/notifier/work.html" />
         <option value="$PROJECT_DIR$/notifier/views.py" />
+        <option value="$PROJECT_DIR$/notifier/templates/notifier/index.html" />
+        <option value="$PROJECT_DIR$/notifier/templates/notifier/acceptance.html" />
       </list>
     </option>
   </component>
@@ -224,24 +169,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templatetags" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="work_notifier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="work_notifier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="notifier" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -282,7 +209,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notifier" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -656,7 +587,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425012060660</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Version Funcional con envío de correos e informe de respuestas. (Corrige error que muestra los aceptados como no aceptados)">
+      <created>1425013415408</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1425013415408</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -674,7 +611,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24444444" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24444444" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32791328" sideWeight="0.8798611" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -706,7 +643,8 @@
     <MESSAGE value="Version funcional con envio de correos. &#10;Por Hacer:&#10;- corregir el link para que&#10;- no poner disponible el formulario si ya se vencio&#10;---para esto se necesita celery" />
     <MESSAGE value="Version funcional con envio de correos. Se niega la creación de un trabajo con el mismo numero y se agregan datos de tiempo de trabajo y rollback&#10;Por Hacer:&#10;- no poner disponible el formulario si ya se vencio&#10;---para esto se necesita celery" />
     <MESSAGE value="Version Funcional con envío de correos e informe de respuestas." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version Funcional con envío de correos e informe de respuestas." />
+    <MESSAGE value="Version Funcional con envío de correos e informe de respuestas. (Corrige error que muestra los aceptados como no aceptados)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version Funcional con envío de correos e informe de respuestas. (Corrige error que muestra los aceptados como no aceptados)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -987,14 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/acceptance.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23648648" vertical-offset="0" max-vertical-offset="1170">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/bootstrap/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="98595">
@@ -1105,14 +1035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/email_template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.5" vertical-offset="960" max-vertical-offset="2700">
-          <caret line="84" column="28" selection-start-line="84" selection-start-column="28" selection-end-line="84" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notifier/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
@@ -1121,47 +1043,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/work.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="1770">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/static/notifier/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.96794873" vertical-offset="702" max-vertical-offset="1965">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="690">
-          <caret line="27" column="80" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
-          <folding>
-            <element signature="e#23#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notifier/templatetags/notifier_extras.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
           <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
           <folding>
-            <element signature="e#22#49#0" expanded="true" />
+            <element signature="e#22#49#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="1845">
-          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1181,47 +1069,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/index.html">
+    <entry file="file://$PROJECT_DIR$/notifier/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0886075" vertical-offset="1485" max-vertical-offset="2010">
-          <caret line="116" column="148" selection-start-line="116" selection-start-column="148" selection-end-line="116" selection-end-column="148" />
+        <state vertical-scroll-proportion="0.96153843" vertical-offset="480" max-vertical-offset="1845">
+          <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notifier/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44871795" vertical-offset="0" max-vertical-offset="780">
+          <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
           <folding>
-            <element signature="n#if#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#2;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#3;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#4;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#5;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#6;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#7;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#8;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#9;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#10;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#11;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#16;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#18;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#19;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#20;n#div#0;n#div#0;n#table#0;n#fieldset#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#23#47#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/acceptance_state.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0" vertical-offset="906" max-vertical-offset="1620">
-          <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.3716216" vertical-offset="0" max-vertical-offset="2250">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/work.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7094595" vertical-offset="0" max-vertical-offset="1860">
+          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/notifier/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.044871796" vertical-offset="1149" max-vertical-offset="3900">
-          <caret line="78" column="72" selection-start-line="78" selection-start-column="72" selection-end-line="78" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.7692308" vertical-offset="1950" max-vertical-offset="3900">
+          <caret line="154" column="17" selection-start-line="154" selection-start-column="17" selection-end-line="154" selection-end-column="17" />
           <folding>
             <element signature="e#26#74#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.1283784" vertical-offset="0" max-vertical-offset="2100">
+          <caret line="63" column="15" selection-start-line="63" selection-start-column="15" selection-end-line="63" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notifier/static/notifier/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92948717" vertical-offset="285" max-vertical-offset="2370">
+          <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/email_template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5743243" vertical-offset="135" max-vertical-offset="2745">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="30" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/acceptance.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6756757" vertical-offset="0" max-vertical-offset="1710">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
