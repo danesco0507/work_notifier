@@ -30,10 +30,11 @@ def import_excel_view(request):
                 # Lectura de excel
 
                 try:
-                    work = parse_minutegram(book.sheet_by_name('Minutograma TP'), w1)
-                    parse_corp_clients(book.sheet_by_name('Clientes Corporativos'), work)
+                    parse_minutegram(book.sheet_by_name('Minutograma TP'), book.sheet_by_name('Clientes Corporativos'), w1)
+
                 except IntegrityError as e:
-                    messages.error(request, 'Hay un problema con el documento---'+e.message)
+                    print e.__cause__
+                    messages.error(request, 'Hay un problema con el documento: '+e.__cause__)
     else:
         form = WorkUploadForm()
 
@@ -167,18 +168,56 @@ def column_value_search(col, value, sheet):
 
 def check_line(line, initial, final, msheet):
     for i in range(initial,final):
-        if msheet.cell is empty_cell:
+        if msheet.cell(line, i) is empty_cell:
             return False
     return True
 
-
-def parse_minutegram(msheet, sw):
+@transaction.atomic
+def parse_minutegram(msheet, csheet, sw):
     work = Work()
-    drow = column_value_search(1, 'DESCRIPCION TP:', msheet)
-    jrow = column_value_search(1, 'JUSTIFICACION: ', msheet)
-    orow = column_value_search(1, 'OBSERVACIONES:', msheet)
-    wprow = column_value_search(1, 'PLAN DE TRABAJO (MINUTOGRAMA):', msheet)
-    cprow = column_value_search(1, 'PLAN DE CONTINGENCIA / ROLLBACK:', msheet)
+
+    if msheet.cell(0,7).value == '':
+        e = IntegrityError()
+        e.__cause__="El trabajo no tiene numero"
+        raise e
+    else:
+        work.number = msheet.cell(0, 7).value
+
+    if column_value_search(1, 'DESCRIPCION TP:', msheet):
+        drow = column_value_search(1, 'DESCRIPCION TP:', msheet)
+    else:
+        e = IntegrityError()
+        e.__cause__="El documento no tiene seccion DESCRIPCION TP"
+        raise e
+
+    if column_value_search(1, 'JUSTIFICACION: ', msheet):
+        jrow = column_value_search(1, 'JUSTIFICACION: ', msheet)
+    else:
+        e = IntegrityError()
+        e.__cause__="El documento no tiene seccion JUSTIFICACION"
+        raise e
+
+    if column_value_search(1, 'OBSERVACIONES:', msheet):
+        orow = column_value_search(1, 'OBSERVACIONES:', msheet)
+    else:
+        e = IntegrityError()
+        e.__cause__="El documento no tiene seccion OBSERVACIONES"
+        raise e
+
+    if column_value_search(1, 'PLAN DE TRABAJO (MINUTOGRAMA):', msheet):
+        wprow = column_value_search(1, 'PLAN DE TRABAJO (MINUTOGRAMA):', msheet)
+    else:
+        e = IntegrityError()
+        e.__cause__="El documento no tiene seccion PLAN DE TRABAJO"
+        raise e
+
+    if column_value_search(1, 'PLAN DE CONTINGENCIA / ROLLBACK:', msheet):
+        cprow = column_value_search(1, 'PLAN DE CONTINGENCIA / ROLLBACK:', msheet)
+    else:
+        e = IntegrityError()
+        e.__cause__="El documento no tiene seccion PLAN DE CONTINGENCIA / ROLLBACK"
+        raise e
+
 
     #este bloque de codigo asigna los datos extraidos del formulario al work creado
     work.ticketArea = sw.ticketArea
@@ -195,14 +234,12 @@ def parse_minutegram(msheet, sw):
     work.justification = msheet.cell(jrow+1, 1).value
     work.observations = msheet.cell(orow+1, 1).value
 
-
-    if msheet.cell(0,7).value == '':
-        raise IntegrityError.message(msheet.cell(0,7).value)
-    else:
-        work.number = msheet.cell(0, 7).value
-
-
-    work.save()
+    try:
+        work.save()
+    except Exception:
+        e = IntegrityError()
+        e.__cause__="Ya existe un trabajo con ese numero"
+        raise e
 
     #loads work plans
     for i in range(wprow+2,cprow):
@@ -227,22 +264,32 @@ def parse_minutegram(msheet, sw):
             cp.activity = msheet.cell(i, 5).value
 
             cp.save()
-    return work
+
+    parse_corp_clients(csheet, work)
 
 
-
-def parse_corp_clients(csheet, work):
+def check_empty_nit(csheet):
     for i in range(3,csheet.nrows):
-        if csheet.cell(i,9) is not empty_cell:
+        if not (isinstance(csheet.cell(i, 9), float)):
+            return False
+    return True
+
+@transaction.atomic
+def parse_corp_clients(csheet, work):
+    if check_empty_nit(csheet):
+        for i in range(3,csheet.nrows):
             aff = Affected()
             aff.work = work
-            aff.name = csheet.cell(i,1).value
-            aff.office = csheet.cell(i,3).value
-            aff.service = csheet.cell(i,5).value
-            aff.capacity = csheet.cell(i,6).value
-            aff.nit = int(csheet.cell(i,9).value)
-
+            aff.name = csheet.cell(i, 1).value
+            aff.office = csheet.cell(i, 3).value
+            aff.service = csheet.cell(i, 5).value
+            aff.capacity = csheet.cell(i, 6).value
+            aff.nit = int(csheet.cell(i, 9).value)
             aff.save()
+    else:
+        e = IntegrityError()
+        e.__cause__="Uno o mas clientes no tienen nit"
+        raise e
 
 
 def get_client_list_by_nit(qList):

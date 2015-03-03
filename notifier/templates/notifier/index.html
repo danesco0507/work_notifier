@@ -30,7 +30,7 @@
         <h1>TRABAJOS </h1>
     </div>
     {% if form.errors %}
-        <ol>
+        <ol id="lista">
         {% for error in form.errors %}
             <li><strong>{{ error|escape }}</strong></li>
         {% endfor %}
