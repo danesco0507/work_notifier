@@ -108,7 +108,7 @@ body {
     margin: auto;
     width: 1030px;
     align-self: center;
-    padding: 10px;
+    padding: 0px;
 }
 
 #regular_table table {
@@ -150,3 +150,60 @@ body {
     border-bottom-right-radius: 10px;
 }
 
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    display:inline-block;
+}
+
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+
+    .tab-links li {
+        margin:0px 5px;
+        float:left;
+        list-style:none;
+    }
+
+        .tab-links a {
+            padding:9px 15px;
+            display:inline-block;
+            border-radius:3px 3px 0px 0px;
+            background:#ffffff;
+            font-size:16px;
+            font-weight:600;
+            color:#00007d;
+            transition:all linear 0.15s;
+            border: 2px solid #000000;
+        }
+
+        .tab-links a:hover {
+            background:#a7cce5;
+            text-decoration:none;
+        }
+
+    li.active a, li.active a:hover {
+        background:#00007d;
+        color:#ffffff;
+    }
+
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        padding:0px;
+        border-radius:3px;
+        box-shadow:-1px 1px 1px rgba(0,0,0,0.15);
+        background:#fff;
+    }
+
+        .tab {
+            display:none;
+        }
+
+        .tab.active {
+            display:block;
+        }

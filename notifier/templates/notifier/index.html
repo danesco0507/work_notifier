@@ -20,6 +20,23 @@
         });
     </script>
 
+    <script>
+        jQuery(document).ready(function() {
+
+
+            jQuery('.tabs .tab-links a').on('click', function(e)  {
+                var currentAttrValue = jQuery(this).attr('href');
+                // Show/Hide Tabs
+                jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+                // Change/remove current tab to active
+                jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
+
+                //e.preventDefault();
+            });
+
+        });
+    </script>
+
     {{ form.media }}
 
 </head>
@@ -63,73 +80,197 @@
         </ul>
     {% endif %}
 
+
+    <!--Muestra la lista de trabajos-->
+
     {% if workList %}
     <div id="regular_table">
         <fieldset>
         <legend>LISTADO DE EPROS:</legend>
-            <table>
-                <tr>
-                    <th>NUMERO DE TRABAJO</th>
-                    <th>FECHA INICIO</th>
-                    <th>FECHA OUTBOUND</th>
-                    <th>ESTADO</th>
-                    <th>MUNICIPIO</th>
-                    <th>CLIENTES</th>
-                    <th>ACCIONES</th>
-                </tr>
-                {% for work in workList %}
+            <div class="tabs">
+                <ul class="tab-links">
+                    <li class="active"><a href="#tab1">Pendientes</a></li>
+                    <li><a href="#tab2">Historico</a></li>
+                </ul>
+
+        <div class="tab-content">
+            <div id="tab1" class="tab active">
+                <table>
                     <tr>
-                        <td><a class="link" href="/notifier/{{ work.id }}">{{work.number}}</a></td>
-                        <td>{{work.initialDate|date:"M d, Y, h:i a"}}</td>
-                        <td>{{work.outboundDate|date:"M d, Y"}}</td>
-                        <td>Programado</td>
-                        <td>{{work.municipality}}</td>
-
-                        {% regroup work.affected_set.all by nit as clients %}
-                        <td>{{ clients|length }}</td>
-                        <td><a class="inline cboxElement" href="#informe_{{ work.id }}">INFORME</a></td>
+                        <th>NUMERO DE TRABAJO</th>
+                        <th>FECHA INICIO</th>
+                        <th>FECHA OUTBOUND</th>
+                        <th>ESTADO</th>
+                        <th>MUNICIPIO</th>
+                        <th>CLIENTES</th>
+                        <th>ACCIONES</th>
                     </tr>
+                    {% for work in pWorkList %}
+                        <tr>
+                            <td><a class="link" href="/notifier/{{ work.id }}">{{work.number}}</a></td>
+                            <td>{{work.initialDate|date:"M d, Y, h:i a"}}</td>
+                            <td>{{work.outboundDate|date:"M d, Y"}}</td>
+                            <td>Programado</td>
+                            <td>{{work.municipality}}</td>
 
-                    <div style="display: none">
-                        <div  id="informe_{{ work.id }}" style="padding:10px; background:#fff;">
-                            <h3>{{ work.number }}</h3>
-                                <b style="float: left">Area:</b> <b style="float: right">{{ work.ticketArea.name }}</b>
-                                <br>
-                                <b style="float: left">Tipo Area:</b> <b style="float: right">{{ work.ticketArea.type }}</b>
-                                <br>
-                                <b style="float: left">Causa:</b> <b style="float: right">{{ work.ticketCause }}</b>
-                                <br>
-                                <b style="float: left">Fecha Inicio:</b> <b style="float: right">{{ work.initialDate|date:"M d, Y, h:i a" }}</b>
-                                <br>
-                                <b style="float: left">Fecha Outbound:</b> <b style="float: right">{{ work.outboundDate|date:"M d, Y" }}</b>
-                                <br>
-                                <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
-                                <br>
-                                <b style="float: left">Ancho de Banda:</b> <b style="float: right">{{ work.affected_set.all|get_total_capacity }}</b>
-                                <br>
+                            {% regroup work.affected_set.all by nit as clients %}
+                            <td>{{ clients|length }}</td>
+                            <td><a class="inline cboxElement" href="#informe_{{ work.id }}">INFORME</a></td>
+                        </tr>
 
-                            {% if work.acceptance_set.all %}
-                                <b>ESTADO DE APROBACIÓN:</b>
-                                <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
-                                <br>
-                                <b style="float: left">Clientes Aceptado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:True|length }}</b>
-                                <br>
-                                <b style="float: left">Clientes Rechazado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:False|length }}</b>
-                                <br>
-                                <b style="float: left">Pendiente:</b> <b style="float: right">{{ work.acceptance_set.all|get_no_response|length }}</b>
-                                <br>
-                                <a href="/notifier/{{ work.id }}/state">VER</a>
+                        <div style="display: none">
+                            <div  id="informe_{{ work.id }}" style="padding:10px; background:#fff;">
+                                <h3>{{ work.number }}</h3>
+                                    <b style="float: left">Area:</b> <b style="float: right">{{ work.ticketArea.name }}</b>
+                                    <br>
+                                    <b style="float: left">Tipo Area:</b> <b style="float: right">{{ work.ticketArea.type }}</b>
+                                    <br>
+                                    <b style="float: left">Causa:</b> <b style="float: right">{{ work.ticketCause }}</b>
+                                    <br>
+                                    <b style="float: left">Fecha Inicio:</b> <b style="float: right">{{ work.initialDate|date:"M d, Y, h:i a" }}</b>
+                                    <br>
+                                    <b style="float: left">Fecha Outbound:</b> <b style="float: right">{{ work.outboundDate|date:"M d, Y" }}</b>
+                                    <br>
+                                    <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
+                                    <br>
+                                    <b style="float: left">Ancho de Banda:</b> <b style="float: right">{{ work.affected_set.all|get_total_capacity }}</b>
+                                    <br>
 
-                            {% else %}
-                                <b>ESTE TRABAJO NO HA SIDO NOTIFICADO</b>
-                            {% endif %}
+                                {% if work.acceptance_set.all %}
+                                    <b>ESTADO DE APROBACIÓN:</b>
+                                    <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
+                                    <br>
+                                    <b style="float: left">Clientes Aceptado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:True|length }}</b>
+                                    <br>
+                                    <b style="float: left">Clientes Rechazado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:False|length }}</b>
+                                    <br>
+                                    <b style="float: left">Pendiente:</b> <b style="float: right">{{ work.acceptance_set.all|get_no_response|length }}</b>
+                                    <br>
+                                    <a href="/notifier/{{ work.id }}/state">VER</a>
+
+                                {% else %}
+                                    <b>ESTE TRABAJO NO HA SIDO NOTIFICADO</b>
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </table>
+                    {% endfor %}
+                </table>
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if pWorkList.has_previous %}
+                            <a href="?p_page={{ pWorkList.previous_page_number }}#tab1">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Página {{ pWorkList.number }} de {{ pWorkList.paginator.num_pages }}.
+                        </span>
+
+                        {% if pWorkList.has_next %}
+                            <a href="?p_page={{ pWorkList.next_page_number }}#tab1">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+
+            <div id="tab2" class="tab">
+                <table>
+                    <tr>
+                        <th>NUMERO DE TRABAJO</th>
+                        <th>FECHA INICIO</th>
+                        <th>FECHA OUTBOUND</th>
+                        <th>ESTADO</th>
+                        <th>MUNICIPIO</th>
+                        <th>CLIENTES</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                    {% for work in workList %}
+                        <tr>
+                            <td><a class="link" href="/notifier/{{ work.id }}">{{work.number}}</a></td>
+                            <td>{{work.initialDate|date:"M d, Y, h:i a"}}</td>
+                            <td>{{work.outboundDate|date:"M d, Y"}}</td>
+                            <td>Programado</td>
+                            <td>{{work.municipality}}</td>
+
+                            {% regroup work.affected_set.all by nit as clients %}
+                            <td>{{ clients|length }}</td>
+                            <td><a class="inline cboxElement" href="#informe_{{ work.id }}">INFORME</a></td>
+                        </tr>
+
+                        <div style="display: none">
+                            <div  id="informe_{{ work.id }}" style="padding:10px; background:#fff;">
+                                <h3>{{ work.number }}</h3>
+                                    <b style="float: left">Area:</b> <b style="float: right">{{ work.ticketArea.name }}</b>
+                                    <br>
+                                    <b style="float: left">Tipo Area:</b> <b style="float: right">{{ work.ticketArea.type }}</b>
+                                    <br>
+                                    <b style="float: left">Causa:</b> <b style="float: right">{{ work.ticketCause }}</b>
+                                    <br>
+                                    <b style="float: left">Fecha Inicio:</b> <b style="float: right">{{ work.initialDate|date:"M d, Y, h:i a" }}</b>
+                                    <br>
+                                    <b style="float: left">Fecha Outbound:</b> <b style="float: right">{{ work.outboundDate|date:"M d, Y" }}</b>
+                                    <br>
+                                    <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
+                                    <br>
+                                    <b style="float: left">Ancho de Banda:</b> <b style="float: right">{{ work.affected_set.all|get_total_capacity }}</b>
+                                    <br>
+
+                                {% if work.acceptance_set.all %}
+                                    <b>ESTADO DE APROBACIÓN:</b>
+                                    <b style="float: left">Número de Enlaces:</b> <b style="float: right">{{ work.affected_set.all|length }}</b>
+                                    <br>
+                                    <b style="float: left">Clientes Aceptado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:True|length }}</b>
+                                    <br>
+                                    <b style="float: left">Clientes Rechazado:</b> <b style="float: right">{{ work.acceptance_set.all|get_accepted:False|length }}</b>
+                                    <br>
+                                    <b style="float: left">Pendiente:</b> <b style="float: right">{{ work.acceptance_set.all|get_no_response|length }}</b>
+                                    <br>
+                                    <a href="/notifier/{{ work.id }}/state">VER</a>
+
+                                {% else %}
+                                    <b>ESTE TRABAJO NO HA SIDO NOTIFICADO</b>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </table>
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if workList.has_previous %}
+                            <a href="?h_page={{ workList.previous_page_number }}#tab2">previous</a>
+                        {% endif %}
+
+                        <span class="current">
+                            Página {{ workList.number }} de {{ workList.paginator.num_pages }}.
+                        </span>
+
+                        {% if workList.has_next %}
+                            <a href="?h_page={{ workList.next_page_number }}#tab2">next</a>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
         </fieldset>
     </div>
     {% endif %}
+
+    <script>
+        if(window.location.hash) {
+            var currentAttrValue = window.location.hash;
+            var q = jQuery('.tabs .tab-links a[href$="'+currentAttrValue+'"]');
+
+            // Show/Hide Tabs
+            jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
+            // Change/remove current tab to active
+            jQuery(q).parent('li').addClass('active').siblings().removeClass('active');
+        }
+
+
+    </script>
 
 </body>
 </html>

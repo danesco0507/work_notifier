@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db import transaction, IntegrityError
 from django.contrib import messages
 from django.core.mail import EmailMessage
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import uuid, datetime
 from django.template.loader import get_template
 from django.template import Context, Template
@@ -33,13 +34,36 @@ def import_excel_view(request):
                     parse_minutegram(book.sheet_by_name('Minutograma TP'), book.sheet_by_name('Clientes Corporativos'), w1)
 
                 except IntegrityError as e:
-                    print e.__cause__
                     messages.error(request, 'Hay un problema con el documento: '+e.__cause__)
     else:
         form = WorkUploadForm()
+    pendantWorkList = Work.objects.filter(initialDate__gt=datetime.datetime.now()).order_by('-initialDate')
+    workList = Work.objects.all().order_by('-initialDate')
 
-    workList = Work.objects.all()
-    context = {'form': form, 'workList': workList}
+    pPaginator = Paginator(pendantWorkList, 10)
+
+    p_page = request.GET.get('p_page')
+
+    try:
+        pendantList = pPaginator.page(p_page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        pendantList = pPaginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        pendantList = pPaginator.page(pPaginator.num_pages)
+
+    hPaginator = Paginator(workList, 10)
+    h_page = request.GET.get('h_page')
+    try:
+        historicList = hPaginator.page(h_page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        historicList = hPaginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        historicList = hPaginator.page(hPaginator.num_pages)
+    context = {'form': form, 'workList': historicList, 'pWorkList': pendantList}
     return render(request,'notifier/index.html', context )
 
 @never_cache
@@ -140,7 +164,6 @@ def send_notification(request, client, acceptance):
                 msg = template.render(context=context)
 
                 f='static/image002.jpg'
-                print "-----"+os.path.join(os.path.dirname(__file__), f)+"-----"
                 fp = open(os.path.join(os.path.dirname(__file__), f), 'rb')
                 msg_img = MIMEImage(fp.read(), 'jpg')
                 fp.close()
@@ -270,7 +293,9 @@ def parse_minutegram(msheet, csheet, sw):
 
 def check_empty_nit(csheet):
     for i in range(3,csheet.nrows):
-        if not (isinstance(csheet.cell(i, 9), float)):
+        print csheet.cell(i, 9)
+        if not (isinstance(csheet.cell(i, 9).value, float)):
+            print "resultado--"+str(i)+":"+str(isinstance(csheet.cell(i, 9).value, float))
             return False
     return True
 
