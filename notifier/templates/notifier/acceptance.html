@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+{% load static %}
+{% load staticfiles %}
+{% load notifier_extras %}
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -41,7 +44,7 @@
     <h1 id="titulo">Aceptación de trabajo</h1>
 <fieldset style="margin: auto; width: 1030px; align-self: center;">
     <legend style="padding-top: 10px">ACEPTAR TRABAJO</legend>
-    {% if acceptance.valid %}
+    {% if acceptance.valid and work|validate_work%}
         <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div id="selector">

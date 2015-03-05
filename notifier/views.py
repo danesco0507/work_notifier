@@ -1,6 +1,6 @@
 # Create your views here.
 from forms import WorkUploadForm, AcceptanceForm
-from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client
+from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client, Cause, Area
 from xlrd import open_workbook, empty_cell
 from xlrd.xldate import xldate_as_datetime, xldate_as_tuple
 from django.shortcuts import render, get_object_or_404
@@ -29,9 +29,9 @@ def import_excel_view(request):
                 input_excel = request.FILES['input_excel']
                 book = open_workbook(file_contents=input_excel.read())
                 # Lectura de excel
-
+                user = request.user
                 try:
-                    parse_minutegram(book.sheet_by_name('Minutograma TP'), book.sheet_by_name('Clientes Corporativos'), w1)
+                    parse_minutegram(book.sheet_by_name('Minutograma TP'), book.sheet_by_name('Clientes Corporativos'), w1, user)
 
                 except IntegrityError as e:
                     messages.error(request, 'Hay un problema con el documento: '+e.__cause__)
@@ -196,7 +196,7 @@ def check_line(line, initial, final, msheet):
     return True
 
 @transaction.atomic
-def parse_minutegram(msheet, csheet, sw):
+def parse_minutegram(msheet, csheet, sw, user):
     work = Work()
 
     if msheet.cell(0,7).value == '':
@@ -251,6 +251,38 @@ def parse_minutegram(msheet, csheet, sw):
     work.initialDate = sw.initialDate
     work.finalDate = sw.finalDate
     work.outboundDate = sw.outboundDate
+    work.createdDate = datetime.date.today()
+
+    #Si el tiempo dado para la causa esta en horas se entiende que debe pasarse a areas internas y nunca externas
+    if sw.ticketCause.timeLapseType == Cause.HOURS and sw.ticketArea.type == Area.INTERN:
+        if sw.initialDate + datetime.timedelta(days=1, hours=sw.ticketCause.internTimeLapse) <= sw.initialDate:
+            work.limitResponseDate = sw.initialDate + datetime.timedelta(days=1, hours=sw.ticketCause.internTimeLapse)
+        else:
+            e = IntegrityError()
+            e.__cause__="El tiempo maximo de respuesta de los clientes es mas tarde que la fecha de inicio del trabajo"
+            raise e
+    elif sw.ticketCause.timeLapseType == Cause.HOURS and sw.ticketArea.type == Area.EXTERN:
+        e = IntegrityError()
+        e.__cause__="La Causa del ticket no puede asignarse a un area externa"
+        raise e
+    elif sw.ticketCause.timeLapseType == Cause.DAYS and sw.ticketArea.type == Area.INTERN:
+        if sw.initialDate + datetime.timedelta(days=1+sw.ticketCause.internTimeLapse) <= sw.initialDate:
+            work.limitResponseDate = sw.initialDate + datetime.timedelta(days=1+sw.ticketCause.internTimeLapse)
+        else:
+            e = IntegrityError()
+            e.__cause__="El tiempo maximo de respuesta de los clientes es mas tarde que la fecha de inicio del trabajo"
+            raise e
+    elif sw.ticketCause.timeLapseType == Cause.DAYS and sw.ticketArea.type == Area.INTERN:
+        if sw.initialDate + datetime.timedelta(days=1+sw.ticketCause.externTimeLapse) <= sw.initialDate:
+            work.limitResponseDate = sw.initialDate + datetime.timedelta(days=1+sw.ticketCause.externTimeLapse)
+        else:
+            e = IntegrityError()
+            e.__cause__="El tiempo maximo de respuesta de los clientes es mas tarde que la fecha de inicio del trabajo"
+            raise e
+
+    #se asigna el usuario loggeado al trabajo
+    if user:
+        work.userCreator = user
     #-------------------------------------------------------------------------------
 
     work.description = msheet.cell(drow+1, 1).value
@@ -275,6 +307,10 @@ def parse_minutegram(msheet, csheet, sw):
             wp.activity = msheet.cell(i, 5).value
 
             wp.save()
+        else:
+            e = IntegrityError()
+            e.__cause__="Alguno de los planes de trabajo tiene un campo vacio"
+            raise e
 
     #loads contingency plans
     for i in range(cprow+2, drow-1):
@@ -287,15 +323,17 @@ def parse_minutegram(msheet, csheet, sw):
             cp.activity = msheet.cell(i, 5).value
 
             cp.save()
+        else:
+            e = IntegrityError()
+            e.__cause__="Alguno de los planes de contingencia tiene un campo vacio"
+            raise e
 
     parse_corp_clients(csheet, work)
 
 
 def check_empty_nit(csheet):
     for i in range(3,csheet.nrows):
-        print csheet.cell(i, 9)
         if not (isinstance(csheet.cell(i, 9).value, float)):
-            print "resultado--"+str(i)+":"+str(isinstance(csheet.cell(i, 9).value, float))
             return False
     return True
 

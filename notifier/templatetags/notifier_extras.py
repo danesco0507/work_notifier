@@ -1,6 +1,7 @@
 __author__ = 'Daniel'
 from django import template
 from django.db.models import Q
+import datetime
 register = template.Library()
 
 @register.filter
@@ -18,3 +19,19 @@ def get_total_capacity(value):
     for aff in value:
         sum += aff.capacity
     return sum
+
+@register.filter
+def get_alarm_type(value):
+    if datetime.date.today() >= value.outboundDate - datetime.timedelta(days=1):
+        return 1
+    elif datetime.date.today() >= value.outboundDate - datetime.timedelta(days=4) and datetime.date.today() < value.outboundDate - datetime.timedelta(days=1):
+        return 2
+    else:
+        return 3
+
+@register.filter
+def validate_work(value):
+    if datetime.datetime.now()<= value.limitResponseDate:
+        return True
+    else:
+        return False
