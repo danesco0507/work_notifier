@@ -23,6 +23,7 @@
     <script>
         jQuery(document).ready(function() {
 
+            $("select#id_municipality").attr('disabled', true);
 
             jQuery('.tabs .tab-links a').on('click', function(e)  {
                 var currentAttrValue = jQuery(this).attr('href');
@@ -34,8 +35,28 @@
                 //e.preventDefault();
             });
 
+            jQuery('select#id_department').change(function(){
+                if($(this).val()==''){
+                    $("select#id_municipality").attr('disabled', true);
+                }
+                else{
+                    var url = "department/" + $(this).val() + "/municipalities_json_models";
+                    var department = $(this).val();
+                    $.getJSON(url, function(municipalities) {
+                        var options = '<option value="">-------</option>';
+                        for (var i = 0; i < municipalities.length; i++) {
+                            options += '<option value="' + municipalities[i].pk + '">' + municipalities[i].fields['name'] + '</option>';
+                        }
+                        $("select#id_municipality").html(options);
+                        $("select#id_municipality option:first").attr('selected', 'selected');
+                        $("select#id_municipality").attr('disabled', false);
+                    });
+                }
+            });
+
         });
     </script>
+
 
     {{ form.media }}
 

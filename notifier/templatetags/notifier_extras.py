@@ -2,6 +2,7 @@ __author__ = 'Daniel'
 from django import template
 from django.db.models import Q
 import datetime
+from notifier.models import Municipality
 register = template.Library()
 
 @register.filter

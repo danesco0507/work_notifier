@@ -1,6 +1,8 @@
 # Create your views here.
+from django.core import serializers
+from django.http import HttpResponse
 from forms import WorkUploadForm, AcceptanceForm
-from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client, Cause, Area
+from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client, Cause, Area, Department, Municipality
 from xlrd import open_workbook, empty_cell
 from xlrd.xldate import xldate_as_datetime, xldate_as_tuple
 from django.shortcuts import render, get_object_or_404
@@ -13,6 +15,7 @@ from django.template.loader import get_template
 from django.template import Context, Template
 from django.views.decorators.cache import never_cache
 from django.db.models import Q
+from django.utils import timezone
 
 import os
 from email.mime.image import MIMEImage
@@ -116,6 +119,12 @@ def acceptance_state_view(request,work_id):
 
     context = {'work': workInstance, 'acceptedList': accepted, 'noAcceptedList': noAccepted, 'pendantList': pendant, 'aRange': aRange, 'nRange': nRange, 'pRange': pRange}
     return render(request, 'notifier/acceptance_state.html', context)
+
+def municipalities_json_models(request, department):
+    current_department = Department.objects.get(pk=department)
+    municipalities = Municipality.objects.all().filter(department=current_department)
+    json_models = serializers.serialize("json", municipalities)
+    return HttpResponse(json_models)
 
 
 #-----helper functions-----
@@ -252,11 +261,12 @@ def parse_minutegram(msheet, csheet, sw, user):
     work.finalDate = sw.finalDate
     work.outboundDate = sw.outboundDate
     work.createdDate = datetime.date.today()
+    now = timezone.make_aware(datetime.datetime.now(), timezone.get_default_timezone())
 
     #Si el tiempo dado para la causa esta en horas se entiende que debe pasarse a areas internas y nunca externas
     if sw.ticketCause.timeLapseType == Cause.HOURS and sw.ticketArea.type == Area.INTERN:
-        if sw.initialDate + datetime.timedelta(days=1, hours=sw.ticketCause.internTimeLapse) <= sw.initialDate:
-            work.limitResponseDate = sw.initialDate + datetime.timedelta(days=1, hours=sw.ticketCause.internTimeLapse)
+        if now + datetime.timedelta(days=1, hours=sw.ticketCause.internTimeLapse) <= sw.initialDate:
+            work.limitResponseDate = now + datetime.timedelta(days=1, hours=sw.ticketCause.internTimeLapse)
         else:
             e = IntegrityError()
             e.__cause__="El tiempo maximo de respuesta de los clientes es mas tarde que la fecha de inicio del trabajo"
@@ -266,15 +276,15 @@ def parse_minutegram(msheet, csheet, sw, user):
         e.__cause__="La Causa del ticket no puede asignarse a un area externa"
         raise e
     elif sw.ticketCause.timeLapseType == Cause.DAYS and sw.ticketArea.type == Area.INTERN:
-        if sw.initialDate + datetime.timedelta(days=1+sw.ticketCause.internTimeLapse) <= sw.initialDate:
-            work.limitResponseDate = sw.initialDate + datetime.timedelta(days=1+sw.ticketCause.internTimeLapse)
+        if now + datetime.timedelta(days=1+sw.ticketCause.internTimeLapse) <= sw.initialDate:
+            work.limitResponseDate = now + datetime.timedelta(days=1+sw.ticketCause.internTimeLapse)
         else:
             e = IntegrityError()
             e.__cause__="El tiempo maximo de respuesta de los clientes es mas tarde que la fecha de inicio del trabajo"
             raise e
     elif sw.ticketCause.timeLapseType == Cause.DAYS and sw.ticketArea.type == Area.INTERN:
-        if sw.initialDate + datetime.timedelta(days=1+sw.ticketCause.externTimeLapse) <= sw.initialDate:
-            work.limitResponseDate = sw.initialDate + datetime.timedelta(days=1+sw.ticketCause.externTimeLapse)
+        if now + datetime.timedelta(days=1+sw.ticketCause.externTimeLapse) <= sw.initialDate:
+            work.limitResponseDate = now + datetime.timedelta(days=1+sw.ticketCause.externTimeLapse)
         else:
             e = IntegrityError()
             e.__cause__="El tiempo maximo de respuesta de los clientes es mas tarde que la fecha de inicio del trabajo"
