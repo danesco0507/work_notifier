@@ -32,7 +32,7 @@ def get_alarm_type(value):
 
 @register.filter
 def validate_work(value):
-    if datetime.datetime.now()<= value.limitResponseDate:
+    if datetime.datetime.now() <= value.limitResponseDate:
         return True
     else:
         return False
