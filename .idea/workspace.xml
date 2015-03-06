@@ -9,7 +9,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ru.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ru.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-si.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-si.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-CN.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-CN.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templatetags/notifier_extras.py" afterPath="$PROJECT_DIR$/notifier/templatetags/notifier_extras.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/views.py" afterPath="$PROJECT_DIR$/notifier/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="work_notifier.iws" />
@@ -38,12 +38,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notifier/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5700">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="33" />
-              <folding />
+            <state vertical-scroll-proportion="0.5448718" vertical-offset="3705" max-vertical-offset="5730">
+              <caret line="264" column="39" selection-start-line="264" selection-start-column="39" selection-end-line="264" selection-end-column="39" />
+              <folding>
+                <element signature="e#26#61#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notifier_extras.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="notifier_extras.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/notifier/templatetags/notifier_extras.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67948717" vertical-offset="207" max-vertical-offset="675">
-              <caret line="35" column="87" selection-start-line="35" selection-start-column="87" selection-end-line="35" selection-end-column="87" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="675">
+              <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
               <folding>
                 <element signature="e#22#49#0" expanded="true" />
               </folding>
@@ -113,8 +115,8 @@
         <option value="$PROJECT_DIR$/notifier/models.py" />
         <option value="$PROJECT_DIR$/notifier/urls.py" />
         <option value="$PROJECT_DIR$/notifier/templates/notifier/index.html" />
-        <option value="$PROJECT_DIR$/notifier/views.py" />
         <option value="$PROJECT_DIR$/notifier/templatetags/notifier_extras.py" />
+        <option value="$PROJECT_DIR$/notifier/views.py" />
       </list>
     </option>
   </component>
@@ -645,7 +647,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425584489253</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Se arregla un error que no permitía comparar la hora actual con la hora del tiempo de respuesta y no permitía contestar la ecuesta">
+      <created>1425649359895</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1425649359895</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -701,7 +709,8 @@
     <MESSAGE value="Versión con transaccionalidad y muestra de errores de carga de excel - mejora de la visualizacion y correos" />
     <MESSAGE value="Se agrega semaforo de revisión, se agrega validación para fechas de respuesta con inicio de trabajo, se agrega validación para responder trabajo si fecha ha pasado. Cambios sobre modelo que permiten la asignación de fecha limite de respuesta." />
     <MESSAGE value="Ahora el formulario de creación de trabajos muestra solo los municipios de un departamento." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ahora el formulario de creación de trabajos muestra solo los municipios de un departamento." />
+    <MESSAGE value="Se arregla un error que no permitía comparar la hora actual con la hora del tiempo de respuesta y no permitía contestar la ecuesta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se arregla un error que no permitía comparar la hora actual con la hora del tiempo de respuesta y no permitía contestar la ecuesta" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1171,20 +1180,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/views.py">
+    <entry file="file://$PROJECT_DIR$/notifier/templatetags/notifier_extras.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5700">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="33" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="207" max-vertical-offset="675">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+          <folding>
+            <element signature="e#22#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/templatetags/notifier_extras.py">
+    <entry file="file://$PROJECT_DIR$/notifier/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67948717" vertical-offset="207" max-vertical-offset="675">
-          <caret line="35" column="87" selection-start-line="35" selection-start-column="87" selection-end-line="35" selection-end-column="87" />
+        <state vertical-scroll-proportion="0.5448718" vertical-offset="3705" max-vertical-offset="5730">
+          <caret line="264" column="39" selection-start-line="264" selection-start-column="39" selection-end-line="264" selection-end-column="39" />
           <folding>
-            <element signature="e#22#49#0" expanded="true" />
+            <element signature="e#26#61#0" expanded="true" />
           </folding>
         </state>
       </provider>

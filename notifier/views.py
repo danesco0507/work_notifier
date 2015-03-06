@@ -261,6 +261,8 @@ def parse_minutegram(msheet, csheet, sw, user):
     work.finalDate = sw.finalDate
     work.outboundDate = sw.outboundDate
     work.createdDate = datetime.date.today()
+    work.affectTime = sw.affectTime
+    work.rollbackTime = sw.rollbackTime
     now = timezone.make_aware(datetime.datetime.now(), timezone.get_default_timezone())
 
     #Si el tiempo dado para la causa esta en horas se entiende que debe pasarse a areas internas y nunca externas
