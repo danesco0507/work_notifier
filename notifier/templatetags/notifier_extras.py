@@ -2,7 +2,8 @@ __author__ = 'Daniel'
 from django import template
 from django.db.models import Q
 import datetime
-from notifier.models import Municipality
+from django.utils import timezone
+
 register = template.Library()
 
 @register.filter
@@ -32,7 +33,8 @@ def get_alarm_type(value):
 
 @register.filter
 def validate_work(value):
-    if datetime.datetime.now() <= value.limitResponseDate:
+    now = timezone.make_aware(datetime.datetime.now(), timezone.get_default_timezone())
+    if now <= value.limitResponseDate:
         return True
     else:
         return False
