@@ -28,6 +28,31 @@ body {
 
 }
 
+#search{
+    margin: auto;
+    width: 1030px;
+    align-self: center;
+}
+
+#search p{
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#search input{
+    height: 34px;
+    float: left;
+}
+
+#search div{
+    float: left;
+    width: 197px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
 #header a{
     color: #ffffff;
     float: right;

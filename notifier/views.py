@@ -40,10 +40,30 @@ def import_excel_view(request):
                     messages.error(request, 'Hay un problema con el documento: '+e.__cause__)
     else:
         form = WorkUploadForm()
-    pendantWorkList = Work.objects.filter(initialDate__gt=datetime.datetime.now()).order_by('-initialDate')
-    workList = Work.objects.all().order_by('-initialDate')
 
-    pPaginator = Paginator(pendantWorkList, 10)
+    pendantWorkList = Work.objects.filter(initialDate__gt=datetime.datetime.now())
+    workList = Work.objects.all()
+
+    if 'ticket' in request.GET and request.GET['ticket'] != '':
+        pendantWorkList = pendantWorkList.filter(Q(number__icontains=request.GET['ticket']))
+        workList = workList.filter(Q(number__icontains=request.GET['ticket']))
+    if 'search_initial' in request.GET and request.GET['search_initial'] != '':
+        d = datetime.datetime.strptime(request.GET['search_initial'], '%Y-%m-%d %H:%M')
+        pendantWorkList = pendantWorkList.filter(initialDate__gte=d)
+        workList = workList.filter(initialDate__gt=d)
+    if 'search_final' in request.GET and request.GET['search_final'] != '':
+        d = datetime.datetime.strptime(request.GET['search_final'], '%Y-%m-%d %H:%M')
+        pendantWorkList = pendantWorkList.filter(initialDate__lte=d)
+        workList = workList.filter(initialDate__lte=d)
+
+    querys = request.GET.copy()
+    if "p_page" in querys:
+        del querys["p_page"]
+    if "h_page" in querys:
+        del querys["h_page"]
+
+
+    pPaginator = Paginator(pendantWorkList.order_by('-initialDate'), 10)
 
     p_page = request.GET.get('p_page')
 
@@ -56,7 +76,7 @@ def import_excel_view(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         pendantList = pPaginator.page(pPaginator.num_pages)
 
-    hPaginator = Paginator(workList, 10)
+    hPaginator = Paginator(workList.order_by('-initialDate'), 10)
     h_page = request.GET.get('h_page')
     try:
         historicList = hPaginator.page(h_page)
@@ -66,7 +86,7 @@ def import_excel_view(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         historicList = hPaginator.page(hPaginator.num_pages)
-    context = {'form': form, 'workList': historicList, 'pWorkList': pendantList}
+    context = {'form': form, 'workList': historicList, 'pWorkList': pendantList, 'queries': querys}
     return render(request,'notifier/index.html', context )
 
 @never_cache

@@ -61,7 +61,6 @@
         });
     </script>
 
-
     {{ form.media }}
 
 </head>
@@ -70,6 +69,8 @@
 <body>
     <div id="header">
         <h1>TRABAJOS </h1>
+
+    <!-- Formulario de creación d eun nuevo trabajo-->
     </div>
     {% if form.errors %}
         <ol id="lista">
@@ -105,11 +106,38 @@
         </ul>
     {% endif %}
 
+    <!-- Formulario de busqueda por parametros-->
+    <div id="search">
+        <fieldset>
+            <legend>Busqueda</legend>
+            <form action="{{ request.path }}" method="get">
+                <p class="search">
+                    <input type="text" name="ticket">
+                </p>
+                <div class="input-group date" id="id_search_initial_picker">
+                    <input class="form-control" id="id_search_initial" name="search_initial" type="text">
+                    <span class="input-group-addon">
+                        <span class="glyphicon-calendar glyphicon"></span>
+                    </span>
+                </div>
+
+                <div class="input-group date" id="id_search_final_picker">
+                    <input class="form-control" id="id_search_final" name="search_final" type="text">
+                    <span class="input-group-addon">
+                        <span class="glyphicon-calendar glyphicon"></span>
+                    </span>
+                </div>
+                <input type="submit" value="Search">
+            </form>
+        </fieldset>
+    </div>
+
 
     <!--Muestra la lista de trabajos-->
 
-    {% if workList %}
+
     <div id="regular_table">
+    {% if workList %}
         <fieldset>
         <legend>LISTADO DE EPROS:</legend>
             <div class="tabs">
@@ -120,6 +148,7 @@
 
         <div class="tab-content">
             <div id="tab1" class="tab active">
+                {% if pWorkList %}
                 <table>
                     <tr>
                         <th>NUMERO DE TRABAJO</th>
@@ -196,7 +225,7 @@
                 <div class="pagination">
                     <span class="step-links">
                         {% if pWorkList.has_previous %}
-                            <a href="?p_page={{ pWorkList.previous_page_number }}#tab1">previous</a>
+                            <a href="?{{queries.urlencode}}&amp;p_page={{ pWorkList.previous_page_number }}#tab1">previous</a>
                         {% endif %}
 
                         <span class="current">
@@ -204,11 +233,15 @@
                         </span>
 
                         {% if pWorkList.has_next %}
-                            <a href="?p_page={{ pWorkList.next_page_number }}#tab1">next</a>
+                            <a href="?{{queries.urlencode}}&amp;p_page={{ pWorkList.next_page_number }}#tab1">next</a>
                         {% endif %}
                     </span>
                 </div>
+                    {% else %}
+            <p>No se encontraron trabajos pendientes</p>
+            {% endif %}
             </div>
+
 
             <div id="tab2" class="tab">
                 <table>
@@ -277,7 +310,7 @@
                 <div class="pagination">
                     <span class="step-links">
                         {% if workList.has_previous %}
-                            <a href="?h_page={{ workList.previous_page_number }}#tab2">previous</a>
+                            <a href="?{{queries.urlencode}}&amp;h_page={{ workList.previous_page_number }}#tab2">previous</a>
                         {% endif %}
 
                         <span class="current">
@@ -285,7 +318,7 @@
                         </span>
 
                         {% if workList.has_next %}
-                            <a href="?h_page={{ workList.next_page_number }}#tab2">next</a>
+                            <a href="?{{queries.urlencode}}&amp;h_page={{ workList.next_page_number }}#tab2">next</a>
                         {% endif %}
                     </span>
                 </div>
@@ -294,8 +327,11 @@
     </div>
 
         </fieldset>
-    </div>
+        {% else %}
+        <p>No se encontraron trabajos</p>
     {% endif %}
+    </div>
+
 
     <script>
         if(window.location.hash) {
@@ -309,6 +345,18 @@
         }
 
 
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#id_search_initial_picker').datetimepicker({format: 'YYYY-MM-DD HH:MM'});
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#id_search_final_picker').datetimepicker({format: 'YYYY-MM-DD HH:MM'});
+        });
     </script>
 
 </body>

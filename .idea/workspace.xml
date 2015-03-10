@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="256bf47b-b481-44c2-abb7-72fda7ea0b9c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/static/check_mark.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/static/delete.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/static/notebook.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/static/round_remove.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/notifier/static/send_mail.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/acceptance.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/acceptance.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/email_template.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/email_template.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/index.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-fa.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-fa.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-hr.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-hr.js" />
@@ -17,8 +11,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ru.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-ru.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-si.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-si.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-CN.js" afterPath="$PROJECT_DIR$/static/colorbox-master/i18n/jquery.colorbox-zh-CN.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/static/notifier/style.css" afterPath="$PROJECT_DIR$/notifier/static/notifier/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/views.py" afterPath="$PROJECT_DIR$/notifier/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifier/templates/notifier/work.html" afterPath="$PROJECT_DIR$/notifier/templates/notifier/work.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="work_notifier.iws" />
@@ -50,12 +44,14 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/notifier/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3342" max-vertical-offset="3810">
-              <caret line="89" column="59" selection-start-line="89" selection-start-column="59" selection-end-line="89" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="3255">
+              <caret line="88" column="88" selection-start-line="88" selection-start-column="88" selection-end-line="88" selection-end-column="88" />
               <folding>
                 <element signature="e#26#61#0" expanded="true" />
-                <element signature="e#9468#15108#0" expanded="false" />
-                <element signature="e#15341#15846#0" expanded="false" />
+                <element signature="e#7535#8358#0" expanded="false" />
+                <element signature="e#8419#10058#0" expanded="false" />
+                <element signature="e#10448#16088#0" expanded="false" />
+                <element signature="e#16321#16826#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -64,65 +60,9 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6169666" vertical-offset="3285" max-vertical-offset="4830">
-              <caret line="235" column="203" selection-start-line="235" selection-start-column="203" selection-end-line="235" selection-end-column="203" />
-              <folding>
-                <element signature="n#style#0;n#input#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#2;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#3;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#1;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#2;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#3;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#4;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#5;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#6;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#7;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#8;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#9;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#10;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#11;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#12;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#13;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#15;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#16;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#17;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#18;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#19;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#20;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#21;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#22;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#td#7;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#0;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#1;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#2;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#3;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#4;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#5;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#6;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#7;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#8;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#9;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#10;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#11;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#12;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#13;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#15;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#16;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#17;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#18;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#19;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#20;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#21;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#b#22;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.5945946" vertical-offset="3261" max-vertical-offset="5550">
+              <caret line="235" column="64" selection-start-line="235" selection-start-column="64" selection-end-line="235" selection-end-column="64" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -148,7 +88,6 @@
         <option value="$PROJECT_DIR$/static/bootstrap/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/static/colorbox-master/example1/colorbox.css" />
         <option value="$PROJECT_DIR$/work_notifier/local_settings.py" />
-        <option value="$PROJECT_DIR$/notifier/static/notifier/style.css" />
         <option value="$PROJECT_DIR$/notifier/templates/notifier/acceptance_state.html" />
         <option value="$PROJECT_DIR$/notifier/forms.py" />
         <option value="$PROJECT_DIR$/work_notifier/settings.py" />
@@ -158,6 +97,8 @@
         <option value="$PROJECT_DIR$/notifier/templates/notifier/acceptance.html" />
         <option value="$PROJECT_DIR$/notifier/templates/notifier/email_template.html" />
         <option value="$PROJECT_DIR$/notifier/templates/notifier/work.html" />
+        <option value="$PROJECT_DIR$/notifier/static/notifier/style.css" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/notifier/views.py" />
         <option value="$PROJECT_DIR$/notifier/templates/notifier/index.html" />
       </list>
@@ -194,7 +135,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -309,6 +249,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -743,7 +684,13 @@
       <option name="project" value="LOCAL" />
       <updated>1425650864144</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Se agregan todas las cciones para los trabajos que permiten cambiar el estado de la revisión del trabajo.">
+      <created>1426000626251</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1426000626251</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -801,7 +748,8 @@
     <MESSAGE value="Ahora el formulario de creación de trabajos muestra solo los municipios de un departamento." />
     <MESSAGE value="Se arregla un error que no permitía comparar la hora actual con la hora del tiempo de respuesta y no permitía contestar la ecuesta" />
     <MESSAGE value="Se corrige un problema que no guardaba el tiempo de afectacion ni el de rollback para los trabajos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se corrige un problema que no guardaba el tiempo de afectacion ni el de rollback para los trabajos" />
+    <MESSAGE value="Se agregan todas las cciones para los trabajos que permiten cambiar el estado de la revisión del trabajo." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se agregan todas las cciones para los trabajos que permiten cambiar el estado de la revisión del trabajo." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -969,13 +917,6 @@
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="469">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="445">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -1165,13 +1106,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notifier/static/notifier/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44871795" vertical-offset="30" max-vertical-offset="3210">
-          <caret line="16" column="29" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notifier/static/clock-1.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1245,7 +1179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.375" vertical-offset="375" max-vertical-offset="1860">
           <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1253,91 +1186,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09615385" vertical-offset="0" max-vertical-offset="468">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notifier/static/notifier/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5811138" vertical-offset="0" max-vertical-offset="3585">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="17" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/notifier/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44871795" vertical-offset="690" max-vertical-offset="2100">
-          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.44871795" vertical-offset="525" max-vertical-offset="2100">
+          <caret line="50" column="7" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/notifier/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3342" max-vertical-offset="3810">
-          <caret line="89" column="59" selection-start-line="89" selection-start-column="59" selection-end-line="89" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="930" max-vertical-offset="3255">
+          <caret line="88" column="88" selection-start-line="88" selection-start-column="88" selection-end-line="88" selection-end-column="88" />
           <folding>
             <element signature="e#26#61#0" expanded="true" />
-            <element signature="e#9468#15108#0" expanded="false" />
-            <element signature="e#15341#15846#0" expanded="false" />
+            <element signature="e#7535#8358#0" expanded="false" />
+            <element signature="e#8419#10058#0" expanded="false" />
+            <element signature="e#10448#16088#0" expanded="false" />
+            <element signature="e#16321#16826#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/notifier/templates/notifier/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6169666" vertical-offset="3285" max-vertical-offset="4830">
-          <caret line="235" column="203" selection-start-line="235" selection-start-column="203" selection-end-line="235" selection-end-column="203" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#3;n#form#0;n#td#7;n#tr#1;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#1;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#2;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#3;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#4;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#5;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#6;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#7;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#8;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#9;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#10;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#11;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#12;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#13;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#15;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#16;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#17;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#18;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#19;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#20;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#21;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#22;n#div#0;n#div#0;n#table#0;n#div#0;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#7;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#0;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#1;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#2;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#3;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#4;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#5;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#6;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#7;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#8;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#9;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#10;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#11;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#12;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#13;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#15;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#16;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#17;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#18;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#19;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#20;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#21;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#b#22;n#div#0;n#div#0;n#table#0;n#div#1;n#div#0;n#div#0;n#fieldset#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.5945946" vertical-offset="3261" max-vertical-offset="5550">
+          <caret line="235" column="64" selection-start-line="235" selection-start-column="64" selection-end-line="235" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
