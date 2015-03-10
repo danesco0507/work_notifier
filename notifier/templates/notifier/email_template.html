@@ -110,8 +110,8 @@ Reciba un cordial saludo de Telefónica Telecom y todo su equipo de trabajo
 <ul id="lista">
     <li>F/H Inicio de la actividad: {{ work.initialDate|date:"M d, Y, h:i a" }}</li>
     <li>F/H Fin de la actividad: {{ work.finalDate }}</li>
-    <li>Afectación (duración y hora): 02:00h desde {% with wpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with wpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
-    <li>Rollback (duración y hora): 02:30h desde {% with cpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with cpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
+    <li>Afectación (duración y hora): {{ work.affectTime|date:"h:i a" }} desde {% with wpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with wpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
+    <li>Rollback (duración y hora): {{ work.rollbackTime|date:"h:i a" }} desde {% with cpList|first as fir %}{{ fir.initialDate|date:"M d, Y, h:i a" }}{% endwith %} hasta {% with cpList|last as las %}{{ las.finalDate|date:"M d, Y, h:i a" }}{% endwith %}</li>
 </ul>
 
 <pre><b>Justificación</b> {{ work.description }}

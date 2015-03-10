@@ -5,7 +5,7 @@ from forms import WorkUploadForm, AcceptanceForm
 from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client, Cause, Area, Department, Municipality
 from xlrd import open_workbook, empty_cell
 from xlrd.xldate import xldate_as_datetime, xldate_as_tuple
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction, IntegrityError
 from django.contrib import messages
 from django.core.mail import EmailMessage
@@ -73,7 +73,26 @@ def import_excel_view(request):
 def work_view(request, work_id):
     workInstance = get_object_or_404(Work, pk=work_id)
     if request.method == 'POST':
-        request = acceptance_creation(request, workInstance)
+        with transaction.atomic():
+            if 'mail' in request.POST or 'mail.y' in request.POST:
+                request = acceptance_creation(request, workInstance)
+                redirect('/notifier/')
+            elif 'accept' in request.POST or 'accept.y' in request.POST:
+                workInstance.state = Work.ACCEPTED
+                workInstance.save()
+                redirect('/notifier')
+            elif 'reject' in request.POST or 'reject.y' in request.POST:
+                workInstance.state = Work.REJECTED
+                workInstance.save()
+                redirect('/notifier/')
+            elif 'cancel' in request.POST or 'cancel.y' in request.POST:
+                workInstance.state = Work.CANCELED
+                for acc in workInstance.acceptance_set.all():
+                    acc.valid = False
+                    acc.save()
+                workInstance.save()
+                redirect('/notifier/')
+
     affectedList = workInstance.affected_set.order_by('nit')
     workPlanList = workInstance.workplan_set.order_by('finalDate')
     contingencyPlanList = workInstance.contingencyplan_set.all()
@@ -129,7 +148,7 @@ def municipalities_json_models(request, department):
 
 #-----helper functions-----
 
-
+@transaction.atomic
 def acceptance_creation(request, work):
 
     ids = set(affected.id for affected in work.affected_set.all())
@@ -144,6 +163,8 @@ def acceptance_creation(request, work):
                 acc.nit = affected.nit
                 acc.token = uuid.uuid4().hex
                 acc.save()
+                work.state = Work.PENDANT
+                work.save()
 
             for other in work.affected_set.all():
                 if other.nit == affected.nit:

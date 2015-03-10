@@ -24,6 +24,8 @@
         jQuery(document).ready(function() {
 
             $("select#id_municipality").attr('disabled', true);
+            $("#id_affectTime_picker span").removeClass("glyphicon-calendar");
+            $("#id_rollbackTime_picker span").removeClass("glyphicon-calendar");
 
             jQuery('.tabs .tab-links a').on('click', function(e)  {
                 var currentAttrValue = jQuery(this).attr('href');
@@ -53,6 +55,8 @@
                     });
                 }
             });
+
+
 
         });
     </script>
@@ -124,6 +128,7 @@
                         <th>ESTADO</th>
                         <th>MUNICIPIO</th>
                         <th>CLIENTES</th>
+                        <th>REVISIÓN</th>
                         <th>ACCIONES</th>
                     </tr>
                     {% for work in pWorkList %}
@@ -136,7 +141,18 @@
 
                             {% regroup work.affected_set.all by nit as clients %}
                             <td>{{ clients|length }}</td>
-                            <td><a class="inline cboxElement" href="#informe_{{ work.id }}">INFORME</a></td>
+                            <td>{{ work.state }}</td>
+                            <td><input class="inline cboxElement" href="#informe_{{ work.id }}" type="image" src="/static/notebook.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                                <form action="{{ request.path }}/notifier/{{ work.id }}/" method="post" enctype="multipart/form-data" style="float: left">
+                                    {% csrf_token %}
+                                    <input type="image" name="mail" src="/static/send_mail.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                                    {% if work.state == work.PENDANT %}
+                                    <input type="image" name="accept" src="/static/check_mark.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                                    <input type="image" name="reject" src="/static/delete.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                                    <input type="image" name="cancel" src="/static/round_remove.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                                    {% endif %}
+                                </form>
+                            </td>
                         </tr>
 
                         <div style="display: none">
@@ -203,6 +219,7 @@
                         <th>ESTADO</th>
                         <th>MUNICIPIO</th>
                         <th>CLIENTES</th>
+                        <th>REVISIÓN</th>
                         <th>ACCIONES</th>
                     </tr>
                     {% for work in workList %}
@@ -215,7 +232,8 @@
 
                             {% regroup work.affected_set.all by nit as clients %}
                             <td>{{ clients|length }}</td>
-                            <td><a class="inline cboxElement" href="#informe_{{ work.id }}">INFORME</a></td>
+                            <td>{{ work.state }}</td>
+                            <td><input class="inline cboxElement" href="#informe_{{ work.id }}" type="image" src="/static/notebook.png" width="30px" height="25px" style="float: left; padding-right: 5px"></td>
                         </tr>
 
                         <div style="display: none">
@@ -294,4 +312,6 @@
     </script>
 
 </body>
+
+<!-- iconos descargados de http://turbomilk.com, http://icons8.com y www.iconza.com-->
 </html>

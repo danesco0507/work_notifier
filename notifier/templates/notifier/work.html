@@ -30,7 +30,7 @@
         <legend>Acciones</legend>
         <form action="{{ request.path }}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <button type="submit" formmethod="post" formaction="{{ request.path }}">Enviar Notificación</button>
+            <button type="submit" name="mail" formmethod="post" formaction="{{ request.path }}">Enviar Notificación</button>
         </form>
 
     </fieldset>
