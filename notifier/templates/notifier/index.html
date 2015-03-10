@@ -111,16 +111,17 @@
         <fieldset>
             <legend>Busqueda</legend>
             <form action="{{ request.path }}" method="get">
-                <p class="search">
+                <p>Número: </p><p class="search">
                     <input type="text" name="ticket">
                 </p>
+                <p>Fecha mayor que: </p>
                 <div class="input-group date" id="id_search_initial_picker">
                     <input class="form-control" id="id_search_initial" name="search_initial" type="text">
                     <span class="input-group-addon">
                         <span class="glyphicon-calendar glyphicon"></span>
                     </span>
                 </div>
-
+                <p>Y/O menor que:</p>
                 <div class="input-group date" id="id_search_final_picker">
                     <input class="form-control" id="id_search_final" name="search_final" type="text">
                     <span class="input-group-addon">
@@ -225,7 +226,7 @@
                 <div class="pagination">
                     <span class="step-links">
                         {% if pWorkList.has_previous %}
-                            <a href="?{{queries.urlencode}}&amp;p_page={{ pWorkList.previous_page_number }}#tab1">previous</a>
+                            <a href="?{{queries.urlencode}}&amp;p_page={{ pWorkList.previous_page_number }}#tab1">Anterior</a>
                         {% endif %}
 
                         <span class="current">
@@ -233,7 +234,7 @@
                         </span>
 
                         {% if pWorkList.has_next %}
-                            <a href="?{{queries.urlencode}}&amp;p_page={{ pWorkList.next_page_number }}#tab1">next</a>
+                            <a href="?{{queries.urlencode}}&amp;p_page={{ pWorkList.next_page_number }}#tab1">Siguiente</a>
                         {% endif %}
                     </span>
                 </div>
@@ -310,7 +311,7 @@
                 <div class="pagination">
                     <span class="step-links">
                         {% if workList.has_previous %}
-                            <a href="?{{queries.urlencode}}&amp;h_page={{ workList.previous_page_number }}#tab2">previous</a>
+                            <a href="?{{queries.urlencode}}&amp;h_page={{ workList.previous_page_number }}#tab2">Anterior</a>
                         {% endif %}
 
                         <span class="current">
@@ -318,7 +319,7 @@
                         </span>
 
                         {% if workList.has_next %}
-                            <a href="?{{queries.urlencode}}&amp;h_page={{ workList.next_page_number }}#tab2">next</a>
+                            <a href="?{{queries.urlencode}}&amp;h_page={{ workList.next_page_number }}#tab2">Siguiente</a>
                         {% endif %}
                     </span>
                 </div>
