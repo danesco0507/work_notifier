@@ -44,11 +44,18 @@ class Cause(models.Model):
         return self.causeType
 
 
+class WorkGroup(models.Model):
+    number = models.CharField(max_length=50, verbose_name='work_number', unique=True)
+    def __str__(self):
+        return self.number
+
+
 class Work(models.Model):
+    group = models.ForeignKey(WorkGroup,verbose_name='Agrupador de trabajo', blank=True, null=True)
     description = models.TextField( verbose_name='work_description')
     justification = models.TextField(verbose_name='work_justification')
     observations = models.TextField(verbose_name='work_observation')
-    number = models.CharField(max_length=50, verbose_name='work_number', unique=True)
+    number = models.CharField(max_length=50, verbose_name='work_number')
     ticketArea = models.ForeignKey(Area, unique=False, verbose_name='Area')
     externAreaID = models.CharField(max_length=50, verbose_name='ID Externo', blank=True, null=True)
     department = models.ForeignKey(Department, unique=False, verbose_name='Departamento')
@@ -64,6 +71,11 @@ class Work(models.Model):
     rollbackTime = models.TimeField(verbose_name='Tiempo de Rollback', blank=True, null=True)
 
     userCreator = models.ForeignKey(User, blank=True, null=True, verbose_name='Creador')
+
+    PROGRAMMED = 'Programado'
+    REPROGRAMMED = 'Reprogramado'
+    PROG_CHOICE = ((PROGRAMMED, 'Programado'), (REPROGRAMMED, 'Reprogramado'))
+    programmed = models.CharField(max_length=50, choices=PROG_CHOICE, default=PROGRAMMED)
 
     ACCEPTED = 'Aceptado'
     REJECTED = 'Rechazado'

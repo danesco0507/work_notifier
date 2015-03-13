@@ -2,7 +2,7 @@
 from django.core import serializers
 from django.http import HttpResponse
 from forms import WorkUploadForm, AcceptanceForm
-from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client, Cause, Area, Department, Municipality
+from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client, Cause, Area, Department, Municipality, WorkGroup
 from xlrd import open_workbook, empty_cell
 from xlrd.xldate import xldate_as_datetime, xldate_as_tuple
 from django.shortcuts import render, get_object_or_404, redirect
@@ -42,6 +42,7 @@ def import_excel_view(request):
         form = WorkUploadForm()
 
     pendantWorkList = Work.objects.filter(initialDate__gt=datetime.datetime.now())
+    pendantWorkList = pendantWorkList.exclude(state=Work.CANCELED)
     workList = Work.objects.all()
 
     if 'ticket' in request.GET and request.GET['ticket'] != '':
@@ -343,11 +344,24 @@ def parse_minutegram(msheet, csheet, sw, user):
     work.observations = msheet.cell(orow+1, 1).value
 
     try:
-        work.save()
-    except Exception:
-        e = IntegrityError()
-        e.__cause__="Ya existe un trabajo con ese numero"
-        raise e
+        group = WorkGroup.objects.get(number = work.number)
+        for w in group.work_set.all():
+            w.state = Work.CANCELED
+            for acc in w.acceptance_set.all():
+                    acc.valid = False
+                    acc.save()
+            w.save()
+
+        work.group = group
+        work.programmed = Work.REPROGRAMMED
+
+    except:
+        group = WorkGroup()
+        group.number = work.number
+        work.group = group
+        group.save()
+
+    work.save()
 
     #loads work plans
     for i in range(wprow+2,cprow):
@@ -382,6 +396,7 @@ def parse_minutegram(msheet, csheet, sw, user):
             raise e
 
     parse_corp_clients(csheet, work)
+
 
 
 def check_empty_nit(csheet):

@@ -166,7 +166,7 @@
                             <td><img src="/static/clock-{{ work|get_alarm_type }}.png" width="30px" height="25px" style="padding-right: 5px"><a class="link" href="/notifier/{{ work.id }}">{{work.number}}</a></td>
                             <td>{{work.initialDate|date:"M d, Y, h:i a"}}</td>
                             <td>{{work.outboundDate|date:"M d, Y"}}</td>
-                            <td>Programado</td>
+                            <td>{{ work.programmed }}</td>
                             <td>{{work.municipality}}</td>
 
                             {% regroup work.affected_set.all by nit as clients %}
@@ -261,7 +261,7 @@
                             <td><a class="link" href="/notifier/{{ work.id }}">{{work.number}}</a></td>
                             <td>{{work.initialDate|date:"M d, Y, h:i a"}}</td>
                             <td>{{work.outboundDate|date:"M d, Y"}}</td>
-                            <td>Programado</td>
+                            <td>{{ work.programmed }}</td>
                             <td>{{work.municipality}}</td>
 
                             {% regroup work.affected_set.all by nit as clients %}
