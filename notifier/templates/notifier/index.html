@@ -109,7 +109,7 @@
     <!-- Formulario de busqueda por parametros-->
     <div id="search">
         <fieldset>
-            <legend>Busqueda</legend>
+            <legend>BÚSQUEDA</legend>
             <form action="{{ request.path }}" method="get">
                 <p>Número: </p><p class="search">
                     <input type="text" name="ticket">
@@ -128,7 +128,7 @@
                         <span class="glyphicon-calendar glyphicon"></span>
                     </span>
                 </div>
-                <input type="submit" value="Search">
+                <input type="submit" value="Buscar">
             </form>
         </fieldset>
     </div>
@@ -172,14 +172,14 @@
                             {% regroup work.affected_set.all by nit as clients %}
                             <td>{{ clients|length }}</td>
                             <td>{{ work.state }}</td>
-                            <td><input class="inline cboxElement" href="#informe_{{ work.id }}" type="image" src="/static/notebook.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                            <td><input class="inline cboxElement" title="Ver Informe" href="#informe_{{ work.id }}" type="image" src="/static/notebook.png" width="30px" height="25px" style="float: left; padding-right: 5px">
                                 <form action="{{ request.path }}/notifier/{{ work.id }}/" method="post" enctype="multipart/form-data" style="float: left">
                                     {% csrf_token %}
-                                    <input type="image" name="mail" src="/static/send_mail.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                                    <input type="image" name="mail" title="Notificar" src="/static/send_mail.png" width="30px" height="25px" style="float: left; padding-right: 5px">
                                     {% if work.state == work.PENDANT %}
-                                    <input type="image" name="accept" src="/static/check_mark.png" width="30px" height="25px" style="float: left; padding-right: 5px">
-                                    <input type="image" name="reject" src="/static/delete.png" width="30px" height="25px" style="float: left; padding-right: 5px">
-                                    <input type="image" name="cancel" src="/static/round_remove.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                                    <input type="image" name="accept" title="Aceptar" src="/static/check_mark.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                                    <input type="image" name="reject" title="Rechazar" src="/static/delete.png" width="30px" height="25px" style="float: left; padding-right: 5px">
+                                    <input type="image" name="cancel" title="Cancelar" src="/static/round_remove.png" width="30px" height="25px" style="float: left; padding-right: 5px">
                                     {% endif %}
                                 </form>
                             </td>
@@ -267,7 +267,7 @@
                             {% regroup work.affected_set.all by nit as clients %}
                             <td>{{ clients|length }}</td>
                             <td>{{ work.state }}</td>
-                            <td><input class="inline cboxElement" href="#informe_{{ work.id }}" type="image" src="/static/notebook.png" width="30px" height="25px" style="float: left; padding-right: 5px"></td>
+                            <td><input title="Ver Informe" class="inline cboxElement" href="#informe_{{ work.id }}" type="image" src="/static/notebook.png" width="30px" height="25px" style="float: left; padding-right: 5px"></td>
                         </tr>
 
                         <div style="display: none">
