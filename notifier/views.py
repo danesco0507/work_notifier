@@ -358,8 +358,10 @@ def parse_minutegram(msheet, csheet, sw, user):
     except:
         group = WorkGroup()
         group.number = work.number
-        work.group = group
         group.save()
+
+        work.group = group
+
 
     work.save()
 

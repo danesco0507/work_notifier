@@ -14,6 +14,7 @@ class Migration(migrations.Migration):
             wg = WorkGroup()
             wg.number = work.number
             wg.save()
+
             work.group = wg
             work.save()
 

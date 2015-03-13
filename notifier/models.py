@@ -51,7 +51,7 @@ class WorkGroup(models.Model):
 
 
 class Work(models.Model):
-    group = models.ForeignKey(WorkGroup,verbose_name='Agrupador de trabajo', blank=True, null=True)
+    group = models.ForeignKey(WorkGroup,verbose_name='Agrupador de trabajo')
     description = models.TextField( verbose_name='work_description')
     justification = models.TextField(verbose_name='work_justification')
     observations = models.TextField(verbose_name='work_observation')
