@@ -91,7 +91,7 @@
                         <th>{{ field.label }}</th><td>{{ field }}</td></tr>
                     {% endif %}
                 {% endfor %}
-                <tr><td colspan="4" align="center" class="submit" style="margin:auto;"><input type="submit" value="Cargar"/></td></tr>
+                <tr><td colspan="4" align="center" class="submit" style="margin:auto;"><input type="submit" name="create" value="Cargar"/></td></tr>
             </table>
         </form>
     </div>
@@ -111,24 +111,35 @@
         <fieldset>
             <legend>BÚSQUEDA</legend>
             <form action="{{ request.path }}" method="get">
-                <p>Número: </p><p class="search">
-                    <input type="text" name="ticket">
-                </p>
-                <p>Fecha mayor que: </p>
-                <div class="input-group date" id="id_search_initial_picker">
-                    <input class="form-control" id="id_search_initial" name="search_initial" type="text">
-                    <span class="input-group-addon">
-                        <span class="glyphicon-calendar glyphicon"></span>
-                    </span>
+                <div class="algo">
+                    <p>Número: </p>
+                    <p>
+                        <input type="text" name="ticket">
+                    </p>
                 </div>
-                <p>Y/O menor que:</p>
-                <div class="input-group date" id="id_search_final_picker">
-                    <input class="form-control" id="id_search_final" name="search_final" type="text">
-                    <span class="input-group-addon">
-                        <span class="glyphicon-calendar glyphicon"></span>
-                    </span>
+
+                <div class="algo">
+                    <p><input type="radio" name="search_type" value="create"></p><p>Por Creación</p>
+                    <p><input type="radio" name="search_type" value="initial" checked></p><p>Por Inicio</p>
+
+                    <p>Fecha mayor que: </p>
+                    <div class="input-group date" id="id_search_initial_picker">
+                        <input class="form-control" id="id_search_initial" name="search_initial" type="text">
+                        <span class="input-group-addon">
+                            <span class="glyphicon-calendar glyphicon"></span>
+                        </span>
+                    </div>
+                    <p>Y/O menor que:</p>
+                    <div class="input-group date" id="id_search_final_picker">
+                        <input class="form-control" id="id_search_final" name="search_final" type="text">
+                        <span class="input-group-addon">
+                            <span class="glyphicon-calendar glyphicon"></span>
+                        </span>
+                    </div>
                 </div>
-                <input type="submit" value="Buscar">
+                <div class="algo">
+                    <input type="submit" value="Buscar">
+                </div>
             </form>
         </fieldset>
     </div>
@@ -326,7 +337,10 @@
             </div>
         </div>
     </div>
-
+    <form action="{{ request.path }}?{{queries.urlencode}}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="submit" name="inform" value="Crear Informe"/>
+    </form>
         </fieldset>
         {% else %}
         <p>No se encontraron trabajos</p>

@@ -66,6 +66,8 @@ class Work(models.Model):
     finalDate = models.DateTimeField(verbose_name='Fecha Final')
     outboundDate = models.DateField(verbose_name='Fecha Outbound')
     createdDate = models.DateField(verbose_name='Fecha de Creacion')
+    notifiedDate = models.DateField(verbose_name='Fecha de notificacion', blank=True, null=True)
+    stateChangedDate = models.DateField(verbose_name='Fecha cambio estado', blank=True, null=True)
     limitResponseDate = models.DateTimeField(verbose_name='Fecha limite de respuesta')
     affectTime = models.TimeField(verbose_name='Tiempo de Afectacion', blank=True, null=True)
     rollbackTime = models.TimeField(verbose_name='Tiempo de Rollback', blank=True, null=True)

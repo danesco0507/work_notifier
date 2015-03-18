@@ -34,18 +34,28 @@ body {
     align-self: center;
 }
 
-#search p{
-    float: left;
-    padding-left: 10px;
-    padding-right: 10px;
+#search .algo {
+    clear: left;
+    display: table;
 }
 
-#search input{
+#search .algo p{
+    float: left;
+    margin: auto 0;
+	line-height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+	height: 100%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+#search .algo input{
     height: 34px;
     float: left;
 }
 
-#search div{
+#search .algo .date{
     float: left;
     width: 197px;
     padding-left: 10px;

@@ -5,6 +5,8 @@ from forms import WorkUploadForm, AcceptanceForm
 from models import Affected, Work, WorkPlan, ContingencyPlan, Acceptance, Client, Cause, Area, Department, Municipality, WorkGroup
 from xlrd import open_workbook, empty_cell
 from xlrd.xldate import xldate_as_datetime, xldate_as_tuple
+from xlwt.Workbook import *
+import xlwt
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction, IntegrityError
 from django.contrib import messages
@@ -16,6 +18,7 @@ from django.template import Context, Template
 from django.views.decorators.cache import never_cache
 from django.db.models import Q
 from django.utils import timezone
+from django.utils.timezone import localtime
 
 import os
 from email.mime.image import MIMEImage
@@ -24,23 +27,6 @@ from email.mime.image import MIMEImage
 @never_cache
 def import_excel_view(request):
 
-    if request.method == 'POST':
-        form = WorkUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            with transaction.atomic():
-                w1 = form.save(commit=False)
-                input_excel = request.FILES['input_excel']
-                book = open_workbook(file_contents=input_excel.read())
-                # Lectura de excel
-                user = request.user
-                try:
-                    parse_minutegram(book.sheet_by_name('Minutograma TP'), book.sheet_by_name('Clientes Corporativos'), w1, user)
-
-                except IntegrityError as e:
-                    messages.error(request, 'Hay un problema con el documento: '+e.__cause__)
-    else:
-        form = WorkUploadForm()
-
     pendantWorkList = Work.objects.filter(initialDate__gt=datetime.datetime.now())
     pendantWorkList = pendantWorkList.exclude(state=Work.CANCELED)
     workList = Work.objects.all()
@@ -48,14 +34,47 @@ def import_excel_view(request):
     if 'ticket' in request.GET and request.GET['ticket'] != '':
         pendantWorkList = pendantWorkList.filter(Q(number__icontains=request.GET['ticket']))
         workList = workList.filter(Q(number__icontains=request.GET['ticket']))
-    if 'search_initial' in request.GET and request.GET['search_initial'] != '':
-        d = datetime.datetime.strptime(request.GET['search_initial'], '%Y-%m-%d %H:%M')
-        pendantWorkList = pendantWorkList.filter(initialDate__gte=d)
-        workList = workList.filter(initialDate__gt=d)
-    if 'search_final' in request.GET and request.GET['search_final'] != '':
-        d = datetime.datetime.strptime(request.GET['search_final'], '%Y-%m-%d %H:%M')
-        pendantWorkList = pendantWorkList.filter(initialDate__lte=d)
-        workList = workList.filter(initialDate__lte=d)
+    if 'search_type' in request.GET and request.GET['search_initial'] == 'initial':
+        if 'search_initial' in request.GET and request.GET['search_initial'] != '':
+            d = datetime.datetime.strptime(request.GET['search_initial'], '%Y-%m-%d %H:%M')
+            pendantWorkList = pendantWorkList.filter(initialDate__gte=d)
+            workList = workList.filter(initialDate__gt=d)
+        if 'search_final' in request.GET and request.GET['search_final'] != '':
+            d = datetime.datetime.strptime(request.GET['search_final'], '%Y-%m-%d %H:%M')
+            pendantWorkList = pendantWorkList.filter(initialDate__lte=d)
+            workList = workList.filter(initialDate__lte=d)
+    else:
+        if 'search_initial' in request.GET and request.GET['search_initial'] != '':
+            d = datetime.datetime.strptime(request.GET['search_initial'], '%Y-%m-%d %H:%M')
+            pendantWorkList = pendantWorkList.filter(createdDate__gte=d)
+            workList = workList.filter(createdDate__gt=d)
+        if 'search_final' in request.GET and request.GET['search_final'] != '':
+            d = datetime.datetime.strptime(request.GET['search_final'], '%Y-%m-%d %H:%M')
+            pendantWorkList = pendantWorkList.filter(createdDate__lte=d)
+            workList = workList.filter(createdDate__lte=d)
+
+    if request.method == 'POST':
+        if 'create' in request.POST:
+            form = WorkUploadForm(request.POST, request.FILES)
+            if form.is_valid():
+                with transaction.atomic():
+                    w1 = form.save(commit=False)
+                    input_excel = request.FILES['input_excel']
+                    book = open_workbook(file_contents=input_excel.read())
+                    # Lectura de excel
+                    user = request.user
+                    try:
+                        parse_minutegram(book.sheet_by_name('Minutograma TP'), book.sheet_by_name('Clientes Corporativos'), w1, user)
+
+                    except IntegrityError as e:
+                        messages.error(request, 'Hay un problema con el documento: '+e.__cause__)
+
+        if 'inform' in request.POST:
+            form = WorkUploadForm()
+            return create_inform(workList)
+
+    else:
+        form = WorkUploadForm()
 
     querys = request.GET.copy()
     if "p_page" in querys:
@@ -100,14 +119,17 @@ def work_view(request, work_id):
                 redirect('/notifier/')
             elif 'accept' in request.POST or 'accept.y' in request.POST:
                 workInstance.state = Work.ACCEPTED
+                workInstance.stateChangedDate = datetime.date.today()
                 workInstance.save()
                 redirect('/notifier')
             elif 'reject' in request.POST or 'reject.y' in request.POST:
                 workInstance.state = Work.REJECTED
+                workInstance.stateChangedDate = datetime.date.today()
                 workInstance.save()
                 redirect('/notifier/')
             elif 'cancel' in request.POST or 'cancel.y' in request.POST:
                 workInstance.state = Work.CANCELED
+                workInstance.stateChangedDate = datetime.date.today()
                 for acc in workInstance.acceptance_set.all():
                     acc.valid = False
                     acc.save()
@@ -185,6 +207,8 @@ def acceptance_creation(request, work):
                 acc.token = uuid.uuid4().hex
                 acc.save()
                 work.state = Work.PENDANT
+                if work.notifiedDate is None:
+                    work.notifiedDate = datetime.date.today()
                 work.save()
 
             for other in work.affected_set.all():
@@ -432,3 +456,73 @@ def get_client_list_by_nit(qList):
         list.append(Client.objects.get(nit=q.nit))
 
     return list
+
+def create_inform(workList):
+    fname = 'inform.xls'
+    response = HttpResponse(content_type="application/ms-excel")
+    response['Content-Disposition'] = 'attachment; filename=%s' % fname
+
+    book = Workbook()
+    sheet = book.add_sheet("Respuestas de clientes")
+
+    sheet.write(0,0,"EPRO")
+    sheet.write(0,1,"AREA")
+    sheet.write(0,2,"Fecha Inicio")
+    sheet.write(0,3,"Causa")
+    sheet.write(0,4,"Estado")
+    # --- Tiempo de cambio de estado menos tiempo de notificacion ---
+    sheet.write(0,5,"Tiempo en Gics")
+    # --- estado de trabajo ---
+    sheet.write(0,6,"Respuesta empresas")
+    sheet.write(0,7,"Fecha notificacion")
+    #--- outbound---
+    sheet.write(0,8,"Fecha respuesta")
+    sheet.write(0,9,"Numero enlaces")
+    sheet.write(0,10,"Ancho de banda")
+    #--- interno o campo de id externo---
+    sheet.write(0,11,"Cliente")
+
+    i= 1
+
+    date_format = xlwt.XFStyle()
+    date_format.num_format_str = 'dd/mm/yyyy'
+
+    for work in workList:
+        sheet.write(i,0,work.number)
+        sheet.write(i,1,work.ticketArea.name)
+        sheet.write(i,2,work.initialDate.replace(tzinfo=None), date_format)
+        sheet.write(i,3,work.ticketCause.causeType)
+        sheet.write(i,4,work.programmed)
+        # --- Tiempo de cambio de estado menos tiempo de notificacion ---
+        if work.notifiedDate is not None and work.stateChangedDate is not None:
+            delta = work.stateChangedDate - work.notifiedDate
+            sheet.write(i,5,delta.days)
+        # --- estado de trabajo ---
+        sheet.write(i,6,work.state)
+
+        sheet.write(i,7,work.notifiedDate, date_format)
+
+        #--- outboud---
+        sheet.write(i,8,work.outboundDate, date_format)
+        sheet.write(i,9,len(work.affected_set.all()))
+
+        sheet.write(i,10,get_total_capacity(work.affected_set.all()))
+        #--- interno o campo de id externo---
+
+        if work.ticketArea.type == Area.INTERN:
+            sheet.write(i,11,work.ticketArea.type)
+        else:
+            sheet.write(i,11,work.externAreaID)
+
+        i += 1
+
+    book.save(response)
+
+    return response
+
+
+def get_total_capacity(affectedList):
+    sum = 0;
+    for aff in affectedList:
+        sum += aff.capacity
+    return sum
