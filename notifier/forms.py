@@ -30,7 +30,9 @@ class WorkUploadForm(forms.ModelForm):
                                        "pickSeconds": False, "pickDate": False}),
                    'rollbackTime': DateTimePicker(options={"format": "HH:mm",
                                        "pickSeconds": False, "pickDate": False})}
-        exclude = ['description', 'justification', 'observations', 'number', 'createdDate', 'userCreator', 'state', 'limitResponseDate', 'group', 'programmed']
+        exclude = ['description', 'justification', 'observations', 'number',
+                   'createdDate', 'userCreator', 'state', 'limitResponseDate', 'group', 'programmed',
+                   'notifiedDate', 'stateChangedDate' ]
 
 
 class AcceptanceForm(forms.ModelForm):
