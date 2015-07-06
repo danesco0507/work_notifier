@@ -10,15 +10,15 @@ import xlwt
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction, IntegrityError
 from django.contrib import messages
+from django.contrib.auth.models import User,Group
 from django.core.mail import EmailMessage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import uuid, datetime
 from django.template.loader import get_template
-from django.template import Context, Template
+from django.template import Context
 from django.views.decorators.cache import never_cache
 from django.db.models import Q
 from django.utils import timezone
-from django.utils.timezone import localtime
 
 import os
 from email.mime.image import MIMEImage
@@ -61,8 +61,8 @@ def import_excel_view(request):
                     w1 = form.save(commit=False)
                     input_excel = request.FILES['input_excel']
                     book = open_workbook(file_contents=input_excel.read())
-                    # Lectura de excel
-                    user = request.user
+                    # Lectura de excel (TODO cambiar por l usuario registrado)
+                    user = User.objects.get_by_natural_key("admin")
                     try:
                         parse_minutegram(book.sheet_by_name('Minutograma TP'), book.sheet_by_name('Clientes Corporativos'), w1, user)
 
